@@ -46,34 +46,11 @@ export default {
         {
           id: 1,
           name: "AM STANDARD OPERATIONS AUDIT FORM",
-          url: "/audit/openingsoa",
+          url: "/audit/management_visit",
           show: true,
 
-        },
-        {
-          id: 2,
-          name: "MIDDAY STANDARD OPERATIONS AUDIT FORM",
-          url: "/audit/midopeningsoa",
-          show: true
-        },
-        {
-          id: 3,
-          name: "FOOD SAFETY FORM",
-          url: "/audit/krss",
-          show: true,
-        },
-        {
-          id: 4,
-          name: "GREENBOOK CHECKLIST FORM",
-          url: "/audit/kdo",
-          show: true,
-        },
-        {
-          id: 5,
-          name: "REDBOOK CHECKLIST FORM",
-          url: "/audit/redbook",
-          show: true,
         }
+
       ]
     };
   },

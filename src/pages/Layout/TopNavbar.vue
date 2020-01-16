@@ -5,7 +5,9 @@
   >
     <div class="md-toolbar-row">
       <div class="md-toolbar-section-start">
-        <h3 class="md-title">{{ $route.name }}</h3>
+        <h3 class="md-title">
+          <!-- {{ $route.name }} --> Management Visitation Checklist
+        </h3>
       </div>
       <div class="md-toolbar-section-end">
         <md-button

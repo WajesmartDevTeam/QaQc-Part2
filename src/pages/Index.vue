@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="title">
-      <h1><span>SUNDRYFOODS &nbsp;</span> QA/QC REPORTS</h1>
+      <h1><span>SUNDRYMARKETS &nbsp;</span> QA/QC REPORTS</h1>
     </div>
     <div class="body">
 
@@ -167,7 +167,7 @@ export default {
       data.value.forEach(i => {
 
 
-        if (i.mailNickname == "storemanagers" || i.mailNickname == "sundryfoodsauditors") {
+        if (i.mailNickname == "SundryMarketsAuditors") {
 
           this.$store.dispatch('user', this.myMSALObj.getAccount().name);
           this.$store.dispatch('role', i.mailNickname)

@@ -3,7 +3,7 @@
     class="wrapper"
     :class="{ 'nav-open': $sidebar.showSidebar }"
   >
-    <notifications></notifications>
+    <!-- <notifications></notifications> -->
 
     <side-bar>
       <sidebar-link to="/audit/home">
@@ -12,45 +12,13 @@
       </sidebar-link>
       <sidebar-link
         v-if="role === 'sundryfoodsauditors'"
-        to="/audit/openingsoa"
-        title="AM Standard Operations Form"
+        to="/audit/management_visit"
+        title="Management Visitation Checklist"
       >
         <md-icon>library_books</md-icon>
-        <p>AM Standard Operations</p>
+        <p>Management Visitation Checklist</p>
       </sidebar-link>
 
-      <sidebar-link
-        v-if="role === 'sundryfoodsauditors'"
-        to="/audit/midopeningsoa"
-        title="MID-DAY Standard Operations Form"
-      >
-        <md-icon>library_books</md-icon>
-        <p>MID-DAY Standard Operations</p>
-      </sidebar-link>
-
-      <sidebar-link
-        v-if="role === 'sundryfoodsauditors'"
-        to="/audit/krss"
-        title="Food Safety Form"
-      >
-        <md-icon>library_books</md-icon>
-        <p>Food Safety Form</p>
-      </sidebar-link>
-
-      <sidebar-link
-        to="/audit/kdo"
-        title="Greenbook Checklist Form"
-      >
-        <md-icon>library_books</md-icon>
-        <p>Greenbook Checklist</p>
-      </sidebar-link>
-      <sidebar-link
-        to="/audit/redbook"
-        title="Redbook Checklist Form"
-      >
-        <md-icon>library_books</md-icon>
-        <p>Redbook Checklist</p>
-      </sidebar-link>
       <sidebar-link to="/">
         <span
           style="height:25px"

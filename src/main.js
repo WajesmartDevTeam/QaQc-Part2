@@ -13,9 +13,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // router setup
 import routes from "./routes/routes";
 // Plugins
-import GlobalComponents from "./globalComponents";
+// import GlobalComponents from "./globalComponents";
 import GlobalDirectives from "./globalDirectives";
-import Notifications from "./components/NotificationPlugin";
+// import Notifications from "./components/NotificationPlugin";
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
 
@@ -48,17 +48,14 @@ router.beforeEach((to, from, next) => {
             query: { redirect: to.fullPath } // Store the full path to redirect the user to after login
         });
     }
-
-
-
     next();
 });
 
 Vue.use(VueRouter);
 Vue.use(MaterialDashboard);
-Vue.use(GlobalComponents);
+// Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
-Vue.use(Notifications);
+// Vue.use(Notifications);
 /* eslint-disable no-new */
 new Vue({
     el: "#app",

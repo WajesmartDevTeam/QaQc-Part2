@@ -1,14 +1,22 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import Index from "@/pages/Index.vue";
-import Login from "@/pages/Login.vue";
 import Home from "@/pages/Home.vue";
-import AMMVR from "@/pages/Am_mvr.vue";
-import AM_standard from "@/pages/Am_standard.vue";
-import MIDDAYMVR from "@/pages/Midday_mvr.vue";
-import Midday_standard from "@/pages/Midday_standard.vue";
-import Food_safety from "@/pages/Foodsafety.vue";
-import Greenbook from "@/pages/Greenbook.vue";
-import Redbook from "@/pages/Redbook.vue";
+import StoreExterior from "@/pages/Store_Exterior.vue";
+import Merchandise from "@/pages/Merchandise.vue";
+import Production from "@/pages/Production.vue";
+import Checkout from "@/pages/Checkout.vue";
+// import InstoreDisplays from "@/pages/InstoreDisplays.vue";
+// import Warehouse from "@/pages/Warehouse.vue";
+// import Staff from "@/pages/Staff.vue";
+// import Opportunities from "@/pages/Opportunities.vue";
+// import Competition from "@/pages/Competition.vue";
+// import General from "@/pages/General.vue";
+// import LossPrevention from "@/pages/LossPrevention.vue";
+// import StoreOpening from "@/pages/StoreOpening.vue";
+// import StoreClosing from "@/pages/StoreClosing.vue";
+// import NightTime from "@/pages/NightTime.vue";
+
+
 const routes = [{
 
         path: "/",
@@ -19,15 +27,6 @@ const routes = [{
             onlyWhenLoggedOut: true
         }
     },
-    // {
-    //     path: "/login",
-    //     name: "Login",
-    //     component: Login,
-    //     meta: {
-    //         public: true, // Allow access to even if not logged in
-    //         onlyWhenLoggedOut: true
-    //     }
-    // },
 
     {
         path: "/audit",
@@ -39,41 +38,76 @@ const routes = [{
                 component: Home
             },
             {
-                path: "amvrfeedback",
-                name: "AM MVR Feedback Report",
-                component: AMMVR
+                path: "exterior",
+                name: "Store Exterior",
+                component: StoreExterior
             },
+            {
+                path: "merchandise",
+                name: "Merchandise",
+                component: Merchandise
+            },
+            {
+                path: "production",
+                name: "Production",
+                component: Production
+            },
+            {
+                path: "checkout",
+                name: "Checkout",
+                component: Checkout
+            },
+            // {
+            //     path: "instore_displays",
+            //     name: "In-store Displays",
+            //     component: InstoreDisplays
+            // },
+            // {
+            //     path: "warehouse",
+            //     name: "Warehouse",
+            //     component: Warehouse
+            // },
+            // {
+            //     path: "staff",
+            //     name: "Staff",
+            //     component: Staff
+            // },
+            // {
+            //     path: "opportunities",
+            //     name: "Opportunities",
+            //     component: Opportunities
+            // },
+            // {
+            //     path: "competition",
+            //     name: "Competition",
+            //     component: Competition
+            // },
+            // {
+            //     path: "general",
+            //     name: "General",
+            //     component: General
+            // },
+            // {
+            //     path: "loss_prevention",
+            //     name: "Loss Prevention",
+            //     component: LossPrevention
+            // },
+            // {
+            //     path: "store_opening",
+            //     name: "Store Opening",
+            //     component: StoreOpening
+            // },
+            // {
+            //     path: "store_closing",
+            //     name: "Store Closing",
+            //     component: StoreClosing
+            // },
+            // {
+            //     path: "night_time",
+            //     name: "Night Time Visitation",
+            //     component: NightTime
+            // },
 
-            {
-                path: "midamvfeedback",
-                name: "MIDDAY MVR Feedback Report",
-                component: MIDDAYMVR
-            },
-            {
-                path: "openingsoa",
-                name: "AM STANDARD OPERATIONS AUDIT",
-                component: AM_standard
-            },
-            {
-                path: "midopeningsoa",
-                name: "MIDDAY STANDARD OPERATIONS AUDIT",
-                component: Midday_standard
-            },
-            {
-                path: "krss",
-                name: "FOOD SAFETY REPORT",
-                component: Food_safety
-            },
-            {
-                path: "kdo",
-                name: "GREENBOOK CHECKLIST",
-                component: Greenbook
-            },
-            {
-                path: "redbook",
-                name: "REDBOOK CHECKLIST",
-                component: Redbook
-            },
         ]
     }
 ];

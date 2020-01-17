@@ -17,6 +17,94 @@
                 id="form-fields"
                 class="card-content"
               >
+                <div
+                  id="1"
+                  class="form-group row question"
+                  data-name="Auditor's Name"
+                >
+                  <label
+                    for="staticEmail"
+                    class="col-3 col-form-label"
+                  >Inspector's Name</label>
+                  <div class="col-9">
+                    <input
+                      v-model="username"
+                      type="text"
+                      class="form-control"
+                      id="staticEmail"
+                      title="Inspector's name"
+                      required
+                    >
+                  </div>
+                </div>
+                <!-- <div
+                  id="2"
+                  class="form-group row question"
+                  data-name="Date"
+                >
+                  <label
+                    for="inputPassword"
+                    class="col-3 col-form-label"
+                  >Date</label>
+                  <div class="col-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="date"
+                      disabled
+                    >
+                  </div>
+                </div> -->
+                <div
+                  id="2"
+                  class="form-group row question loc"
+                  data-name="Restaurant/Location"
+                >
+                  <label
+                    for="staticEmail"
+                    class="col-3 col-form-label"
+                  >Restaurant/Location</label>
+                  <div class="col-9">
+                    <select
+                      class="form-control"
+                      id="location"
+                      v-model="form.store_id"
+                      title="Select store visited"
+                      required
+                    >
+                      <option
+                        hidden
+                        value=""
+                      >select store...</option>
+                      <option
+                        v-for="(store, index) in stores"
+                        :key="index"
+                        v-bind:value="store.id"
+                      >{{store.address +", "+store.location}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div
+                  id="3"
+                  class="form-group row question"
+                  data-name="Manager(s) on Duty"
+                >
+                  <label
+                    for="inputPassword"
+                    class="col-3 col-form-label"
+                  >Branch Manager on Duty</label>
+                  <div class="col-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputPassword"
+                      v-model="store_manager"
+                      required
+                    >
+                  </div>
+                </div>
+
+                <br>
 
                 <div>
                   <h5 class="subtitle"><u>Scoring</u></h5>
@@ -1315,6 +1403,8 @@ export default {
   data () {
     return {
       username: "",
+      stores: [],
+      store_manager: "",
       o365_users: [],
       all_users: [],
       tasks: {
@@ -1364,6 +1454,7 @@ export default {
     }
 
     today = yyyy + '-' + mm + '-' + dd;
+    // document.getElementById("date").value = today;
     document.getElementById("taskdate1").setAttribute("min", today);
     document.getElementById("taskdate2").setAttribute("min", today);
     document.getElementById("taskdate3").setAttribute("min", today);
@@ -1417,6 +1508,24 @@ export default {
       });
       this.form.total_point = total_point;
       this.form.total_percent = Math.ceil((this.form.total_point / 85) * 100);
+
+      //data info
+      let qa = [];
+      var divs = document.querySelectorAll('.question').forEach(function (el) {
+        let index = el.id;
+        let qtext = el.dataset.name.replace(/\n/g, ' ');
+        let ans;
+
+        if (el.childNodes[1].localName == "div") {
+          ans = el.childNodes[1].childNodes[0].value;
+        }
+        qa.push({
+          questionno: index,
+          question: qtext,
+          answer: ans,
+        })
+      })
+      console.log(qa)
 
       //microsoft planner-action tasks
 

@@ -1,135 +1,15 @@
 <template>
   <div class="content">
     <div class="md-layout">
-      <div class="md-layout-item md-size-100">
-        <md-card>
-          <md-card-header data-background-color="orange">
-            <h4 class="title">Management Visitation Checklist</h4>
-          </md-card-header>
-          <md-card-content>
-            <form
-              id="Am-StandardOperation"
-              role="form"
-              v-on:submit.prevent="saveContinue"
-            >
-              <div
-                id="form-fields"
-                class="card-content"
-              >
-                <div
-                  id="1"
-                  class="form-group row question"
-                  data-name="Auditor's Name"
-                >
-                  <label
-                    for="staticEmail"
-                    class="col-3 col-form-label"
-                  >Inspector's Name</label>
-                  <div class="col-9">
-                    <input
-                      v-model="username"
-                      type="text"
-                      class="form-control"
-                      id="staticEmail"
-                      title="Inspector's name"
-                      required
-                    >
-                  </div>
-                </div>
-                <div
-                  id="2"
-                  class="form-group row question"
-                  data-name="Date"
-                >
-                  <label
-                    for="inputPassword"
-                    class="col-3 col-form-label"
-                  >Date</label>
-                  <div class="col-9">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="date"
-                      disabled
-                    >
-                  </div>
-                </div>
-                <div
-                  id="3"
-                  class="form-group row question loc"
-                  data-name="Restaurant/Location"
-                >
-                  <label
-                    for="staticEmail"
-                    class="col-3 col-form-label"
-                  >Restaurant/Location</label>
-                  <div class="col-9">
-                    <select
-                      class="form-control"
-                      id="location"
-                      v-model="form.store_id"
-                      title="Select store visited"
-                      required
-                    >
-                      <option
-                        hidden
-                        value=""
-                      >select store...</option>
-                      <option
-                        v-for="(store, index) in stores"
-                        :key="index"
-                        v-bind:value="store.id"
-                      >{{store.address +", "+store.location}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div
-                  id="4"
-                  class="form-group row question"
-                  data-name="Manager(s) on Duty"
-                >
-                  <label
-                    for="inputPassword"
-                    class="col-3 col-form-label"
-                  >Branch Manager on Duty</label>
-                  <div class="col-9">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputPassword"
-                      v-model="store_manager"
-                      required
-                    >
-                  </div>
-                </div>
 
-                <br>
-                <div class="float-right">
-                  <!-- <button
-                    @click="submitForm"
-                    class="btn md-raised md-warning text-white btn-warning "
-                    style="margin-bottom:10px"
-                  >Save
-                  </button> -->
-                  <button
-                    class="btn md-raised md-warning text-white btn-warning ml-3"
-                    style="margin-bottom:10px"
-                  >Save & Continue
-                  </button>
-                </div>
-
-              </div>
-              <!-- store exterior -->
-              <div class="card-content">
-
-              </div>
-            </form>
-          </md-card-content>
-        </md-card>
-
-        <!-- </div> -->
-
+      <div class="info md-layout-item md-size-100">
+        <img
+          style="width:100%"
+          src="https://image.freepik.com/free-vector/welcome-lettering-yellow-origami-speech-bubble-with-triangles_1262-11380.jpg"
+          alt=""
+        >
       </div>
+
     </div>
   </div>
 </template>
@@ -155,7 +35,6 @@ export default {
     };
   },
   mounted () {
-    this.role = this.$store.getters.role;
     this.getStores()
   },
   methods: {
@@ -186,7 +65,7 @@ export default {
       mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("date").value = today;
+    // document.getElementById("date").value = today;
   },
   watch: {
     'form.store_id': function (val) {

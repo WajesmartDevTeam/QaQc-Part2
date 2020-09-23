@@ -71,7 +71,7 @@ export default {
           clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
           authority:
             "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
-          postLogoutRedirectUri: "https://qaqc.sundryhrms.website/"
+          postLogoutRedirectUri: "http://localhost:8080"
         }
       },
       graphConfig: {
@@ -167,6 +167,7 @@ export default {
     },
     graphAPICallback(data) {
       let access;
+      console.log(data);
       data.value.forEach(i => {
         if (i.displayName == "auditors") {
           this.$store.dispatch("user", this.myMSALObj.getAccount().name);

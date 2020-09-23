@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="wrapper"
-    :class="{ 'nav-open': $sidebar.showSidebar }"
-  >
+  <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <!-- <notifications></notifications> -->
 
     <side-bar>
@@ -68,16 +65,11 @@
       </sidebar-link>
 
       <sidebar-link to="/" style="margin-bottom:50px;margin-left:18px">
-        <span
-          style="height:25px"
-          @click="logOut"
-        >
+        <span style="height:25px" @click="logOut">
           <md-icon>power_settings_new</md-icon>
           <p>Log Out</p>
         </span>
-
       </sidebar-link>
-
     </side-bar>
 
     <div class="main-panel">
@@ -102,20 +94,19 @@ export default {
     ContentFooter,
     MobileMenu
   },
-  data () {
+  data() {
     return {
-      role: "",
-    }
+      role: ""
+    };
   },
-  mounted () {
+  mounted() {
     this.role = this.$store.getters.role;
   },
   methods: {
-    logOut () {
-      this.$store.dispatch('logout', true)
-      this.$router.push('index')
+    logOut() {
+      this.$store.dispatch("logout", true);
+      this.$router.push("index");
     }
   }
 };
 </script>
-

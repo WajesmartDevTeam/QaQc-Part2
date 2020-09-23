@@ -1,12 +1,10 @@
 <template>
-  <md-toolbar
-    md-elevation="0"
-    class="md-transparent"
-  >
+  <md-toolbar md-elevation="0" class="md-transparent">
     <div class="md-toolbar-row">
       <div class="md-toolbar-section-start">
         <h3 class="md-title">
-          <!-- {{ $route.name }} --> Management Visitation Checklist
+          <!-- {{ $route.name }} -->
+          Management Visitation Checklist
         </h3>
       </div>
       <div class="md-toolbar-section-end">
@@ -38,14 +36,14 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       // selectedPeriod: null,
       // periods: ["1 week", "1 Month", "Quarter", "6 Months", "One Year"]
     };
   },
   methods: {
-    toggleSidebar () {
+    toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     }
   }

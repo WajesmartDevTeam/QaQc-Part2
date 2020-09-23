@@ -5,16 +5,16 @@ import StoreExterior from "@/pages/Store_Exterior.vue";
 import Merchandise from "@/pages/Merchandise.vue";
 import Production from "@/pages/Production.vue";
 import Checkout from "@/pages/Checkout.vue";
-//import InstoreDisplays from "@/pages/InstoreDisplays.vue";
-//import Warehouse from "@/pages/Warehouse.vue";
-//import Staff from "@/pages/Staff.vue";
-//import Opportunities from "@/pages/Opportunities.vue";
-//import Competition from "@/pages/Competition.vue";
-//import General from "@/pages/General.vue";
-//import LossPrevention from "@/pages/LossPrevention.vue";
-//import StoreOpening from "@/pages/StoreOpening.vue";
-//import StoreClosing from "@/pages/StoreClosing.vue";
-//import NightTime from "@/pages/NightTime.vue";
+import InstoreDisplays from "@/pages/InstoreDisplays.vue";
+import Warehouse from "@/pages/Warehouse.vue";
+import Staff from "@/pages/Staff.vue";
+import Opportunities from "@/pages/Opportunities.vue";
+import Competition from "@/pages/Competition.vue";
+import General from "@/pages/General.vue";
+import LossPrevention from "@/pages/LossPrevention.vue";
+import StoreOpening from "@/pages/StoreOpening.vue";
+import StoreClosing from "@/pages/StoreClosing.vue";
+import NightTime from "@/pages/NightTime.vue";
 
 const routes = [
   {

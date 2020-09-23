@@ -4,21 +4,19 @@
       <h1><span>SUNDRYMARKETS &nbsp;</span> QA/QC REPORTS</h1>
     </div>
     <div class="body">
-
-      <div
-        id="admin"
-        class="row"
-      >
+      <div id="admin" class="row">
         <div class="col-12 my-auto">
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">For Admin</h1>
-            <br><br>
+            <br /><br />
             <a href="https://qa-admin.sundryhrms.website/">
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"
                 title="Sign in to view reports"
-              >Sign In</button>
+              >
+                Sign In
+              </button>
             </a>
           </div>
         </div>
@@ -32,17 +30,18 @@
             <div class="col-12 my-auto">
               <div class="masthead-content text-warning py-5 py-md-0">
                 <h1 class="mb-3">For Inspectors</h1>
-                <br><br>
+                <br /><br />
                 <a @click="signIn">
                   <button
                     class="text-uppercase btn btn-warning text-white p-2"
                     type="button"
                     title="Sign in with work account to fill forms"
-                  >Sign In</button>
+                  >
+                    Sign In
+                  </button>
                 </a>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -50,13 +49,12 @@
   </div>
 </template>
 
-
 <script>
 export default {
-  beforeCreate: function () {
-    document.body.className = 'home';
+  beforeCreate: function() {
+    document.body.className = "home";
   },
-  data () {
+  data() {
     return {
       remember: "",
       login: {
@@ -70,8 +68,9 @@ export default {
       myMSALObj: null,
       msalConfig: {
         auth: {
-          clientId: 'dfd74765-cfab-4e7f-bdcb-c619d600dfee', //This is your client ID
-          authority: "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40",//This is your tenant info
+          clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
+          authority:
+            "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
           postLogoutRedirectUri: "https://qaqc.sundryhrms.website/"
         }
       },
@@ -85,19 +84,22 @@ export default {
       }
     };
   },
-  created () {
+  created() {
+    let msal = document.createElement("script");
+    msal.setAttribute(
+      "src",
+      "https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"
+    );
+    document.head.appendChild(msal);
 
-    let msal = document.createElement('script')
-    msal.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js')
-    document.head.appendChild(msal)
-
-    let aadcdn = document.createElement('script')
-    aadcdn.setAttribute('src', 'https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js')
+    let aadcdn = document.createElement("script");
+    aadcdn.setAttribute(
+      "src",
+      "https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"
+    );
     document.head.appendChild(aadcdn);
   },
-  mounted () {
-
-
+  mounted() {
     this.myMSALObj = new Msal.UserAgentApplication(this.msalConfig);
     // Register Callbacks for redirect flow
     // myMSALObj.handleRedirectCallbacks(acquireTokenRedirectCallBack, acquireTokenErrorRedirectCallBack);
@@ -106,11 +108,9 @@ export default {
       this.signOut();
       // location.reload()
     }
-
-
   },
   methods: {
-    async signIn () {
+    async signIn() {
       var html =
         '<img src="https://freefrontend.com/assets/img/css-loaders/css-fun-Little-loader.gif"/>';
       this.$swal.fire({
@@ -129,80 +129,86 @@ export default {
       } catch (ex) {
         console.log(ex);
       }
-
     },
 
-    signOut () {
-      this.$store.dispatch('loggedIn', false)
-      this.$store.dispatch('logout', false)
+    signOut() {
+      this.$store.dispatch("loggedIn", false);
+      this.$store.dispatch("logout", false);
       this.myMSALObj.logout();
       // this.type = "A"
-      this.$router.push('index')
+      this.$router.push("index");
     },
-    async acquireTokenPopupAndCallMSGraph () {
-
+    async acquireTokenPopupAndCallMSGraph() {
       //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
       try {
-        const tokenResponse = await this.myMSALObj.acquireTokenSilent(this.requestObj);
+        const tokenResponse = await this.myMSALObj.acquireTokenSilent(
+          this.requestObj
+        );
         this.tokenResponse = tokenResponse;
-        this.$store.dispatch('msalToken', tokenResponse)
-        this.callMSGraph(this.graphConfig.graphMeEndpoint, tokenResponse.accessToken, this.graphAPICallback);
+        this.$store.dispatch("msalToken", tokenResponse);
+        this.callMSGraph(
+          this.graphConfig.graphMeEndpoint,
+          tokenResponse.accessToken,
+          this.graphAPICallback
+        );
       } catch (ex) {
         console.log(ex);
-
       }
     },
-    callMSGraph (theUrl, accessToken, callback) {
+    callMSGraph(theUrl, accessToken, callback) {
       var xmlHttp = new XMLHttpRequest();
-      xmlHttp.onreadystatechange = function () {
+      xmlHttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)
           callback(JSON.parse(this.responseText));
-      }
+      };
       xmlHttp.open("GET", theUrl, true); // true for asynchronous
-      xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+      xmlHttp.setRequestHeader("Authorization", "Bearer " + accessToken);
       xmlHttp.send();
     },
-    graphAPICallback (data) {
+    graphAPICallback(data) {
       let access;
       data.value.forEach(i => {
-
-
         if (i.displayName == "auditors") {
-
-          this.$store.dispatch('user', this.myMSALObj.getAccount().name);
-          this.$store.dispatch('role', i.displayName)
-          this.$store.dispatch('loggedIn', true)
-          access = true
+          this.$store.dispatch("user", this.myMSALObj.getAccount().name);
+          this.$store.dispatch("role", i.displayName);
+          this.$store.dispatch("loggedIn", true);
+          access = true;
         }
 
         if (access === true) {
-          this.$swal.fire("Success", "Welcome " + this.myMSALObj.getAccount().name + "", "success");
+          this.$swal.fire(
+            "Success",
+            "Welcome " + this.myMSALObj.getAccount().name + "",
+            "success"
+          );
 
-          window.location.href = "/audit/home"
+          window.location.href = "/audit/home";
+        } else {
+          this.$swal
+            .fire({
+              title: "Error",
+              text:
+                "User Access Denied. Contact your Admin to grant you access.",
+              showCloseButton: true,
+              focusConfirm: false,
+              confirmButtonText: '<i class="fa fa-thumbs-down"></i> Sign Out',
+              width: "300px",
+              allowOutsideClick: false
+            })
+            .then(() => {
+              this.$store.dispatch("logout", true);
+              location.reload();
+            });
         }
-        else {
-          this.$swal.fire({
-            title: "Error",
-            text: "User Access Denied. Contact your Admin to grant you access.",
-            showCloseButton: true,
-            focusConfirm: false,
-            confirmButtonText:
-              '<i class="fa fa-thumbs-down"></i> Sign Out',
-            width: "300px",
-            allowOutsideClick: false
-          }).then(() => {
-            this.$store.dispatch('logout', true)
-            location.reload()
-          })
-
-
-
-        }
-      })
+      });
     },
 
-    showWelcomeMessage () {
-      this.$swal.fire("Success", "Welcome " + this.myMSALObj.getAccount().userName + " to QA/QC Audit", "success");
+    showWelcomeMessage() {
+      this.$swal.fire(
+        "Success",
+        "Welcome " + this.myMSALObj.getAccount().userName + " to QA/QC Audit",
+        "success"
+      );
       // this.status = {
       //   status: "Success",
       //   message: "Welcome " + this.myMSALObj.getAccount().userName + " to QA/QC Audit"
@@ -210,27 +216,33 @@ export default {
 
       // this.type = 'B';
     },
-    authRedirectCallBack (error, response) {
+    authRedirectCallBack(error, response) {
       if (error) {
         console.log(error);
       } else {
         if (response.tokenType === "access_token") {
-          this.callMSGraph(this.graphConfig.graphMeEndpoint, response.accessToken, this.graphAPICallback);
+          this.callMSGraph(
+            this.graphConfig.graphMeEndpoint,
+            response.accessToken,
+            this.graphAPICallback
+          );
         } else {
           // console.log("token type is:" + response.tokenType);
         }
       }
     },
-    requiresInteraction (errorCode) {
+    requiresInteraction(errorCode) {
       if (!errorCode || !errorCode.length) {
         return false;
       }
-      return errorCode === "consent_required" ||
+      return (
+        errorCode === "consent_required" ||
         errorCode === "interaction_required" ||
-        errorCode === "login_required";
-    },
+        errorCode === "login_required"
+      );
+    }
   }
-}
+};
 </script>
 
 <style>

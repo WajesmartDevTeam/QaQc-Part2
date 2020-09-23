@@ -2,8 +2,8 @@ import axios from "axios";
 import Vue from "vue";
 import store from "./store";
 
-const URL = "http://qaqc.marketsquareng.website/api/";
-//const URL = "https://qa.sundryhrms.website/api/";
+//const URL = "http://qaqc.marketsquareng.website/api/";
+const URL = "https://qa.sundryhrms.website/api/";
 
 export default {
   name: "Request",

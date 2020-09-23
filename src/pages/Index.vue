@@ -167,10 +167,10 @@ export default {
       data.value.forEach(i => {
 
 
-        if (i.mailNickname == "SundryMarketsAuditors") {
+        if (i.displayName == "auditors") {
 
           this.$store.dispatch('user', this.myMSALObj.getAccount().name);
-          this.$store.dispatch('role', i.mailNickname)
+          this.$store.dispatch('role', i.displayName)
           this.$store.dispatch('loggedIn', true)
           access = true
         }

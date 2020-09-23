@@ -64,7 +64,7 @@
                     for="staticEmail"
                     class="col-3 col-form-label"
                   >Restaurant/Location</label>
-                  <div class="col-9">
+                  <div class="col-9 select-wrapper">
                     <select
                       class="form-control"
                       id="location"
@@ -1004,6 +1004,29 @@
                   </md-card-content>
                 </md-card>
 
+                <h5 class="subtitle">Comments</h5>
+            <div
+                  id="4"
+                  class="form-group row question"
+                  data-name="5 things the Store did well"
+                >
+                  <label
+                    for="staticEmail" class="col-5 col-form-label">Top 5 things the store did well:
+                    </label><br>
+                    <textarea rows="5" cols= "138" style="margin-left:13px" type="text" ></textarea>
+                </div>
+                  
+                 <div
+                  id="5"
+                  class="form-group row question"
+                  data-name="5 things the Store needs to improve on"
+                >
+                  <label
+                    for="" class=" col-5 form-label">Top 5 things the store needs to improve on:
+                    </label><br>
+                    <textarea rows="5" cols= "138" style="margin-left:13px" type="text" ></textarea>
+                </div>
+
                 <div v-show='toggle'>
                   <h5 class="subtitle">Assign Tasks on things that need improvement / Correction</h5>
                   <table class="table table-bordered">
@@ -1418,11 +1441,17 @@ export default {
       image: false,
       images: [],
       form: {
-        section: "Store Exterior",
+        section_name: "Store Exterior",
+        section_type:"SE",
+        scoring_type:"scoring",
         total_point: "",
         total_percent: "",
         taskplanner: [],
-        images: []
+        image1:"",
+        image2:"",
+        image3:"",
+        image4:"",
+        image5:""
       },
       myMSALObj: null,
       msalConfig: {
@@ -1440,7 +1469,7 @@ export default {
   },
   mounted () {
 
-    this.stores = this.$store.getters.stores;
+    this.getStores();
     this.username = this.$store.getters.user;
     var today = new Date();
     var dd = today.getDate();
@@ -1454,7 +1483,6 @@ export default {
     }
 
     today = yyyy + '-' + mm + '-' + dd;
-    // document.getElementById("date").value = today;
     document.getElementById("taskdate1").setAttribute("min", today);
     document.getElementById("taskdate2").setAttribute("min", today);
     document.getElementById("taskdate3").setAttribute("min", today);
@@ -1519,13 +1547,17 @@ export default {
         if (el.childNodes[1].localName == "div") {
           ans = el.childNodes[1].childNodes[0].value;
         }
+        else {
+          ans = el.childNodes[2].value;
+        }
         qa.push({
           questionno: index,
-          question: qtext,
+          questiontext: qtext,
           answer: ans,
         })
       })
-      console.log(qa)
+      
+      this.form.question = qa;
 
       //microsoft planner-action tasks
 
@@ -1560,7 +1592,7 @@ export default {
 
           let plannerTask =
           {
-            "planId": "qIHpeHJuykm_kq3m15BkZGUAHlCA",
+            "planId": "iciLfcUe4keB_41IBcpwJWUAHkh2",
             "title": title,
             "dueDateTime": due_date,
             assignments: {},
@@ -1576,17 +1608,75 @@ export default {
             due_date: due_date
 
           })
-          console.log(plannerTask)
+          //console.log(plannerTask)
 
-          //   this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask))
+          this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask))
         }
       });
 
 
       this.form.taskplanner = taskplanner;
-      this.form.images = this.images;
-      console.log(this.form);
+      if(this.images[0] == undefined){
+        this.images[0]={image:""};
+      }
+       if(this.images[1] == undefined){
+        this.images[1]={image:""}
+      }
+       if(this.images[2] == undefined){
+        this.images[2]={image:""}
+      }
+       if(this.images[3] == undefined){
+        this.images[3]={image:""}
+      }
+       if(this.images[4] == undefined){
+        this.images[4]={image:""}
+      }
 
+       this.form.image1=this.images[0]["image"];
+       this.form.image2=this.images[1]["image"];
+       this.form.image3=this.images[2]["image"];
+       this.form.image4=this.images[3]["image"];
+       this.form.image5=this.images[4]["image"];
+      
+     
+
+      console.log(this.form);
+      this.postForm();
+
+    },
+postForm () {
+      var html =
+        '<img src="https://freefrontend.com/assets/img/css-loaders/css-fun-Little-loader.gif"/>';
+ 
+      this.$swal.fire({
+        title: "Processing",
+        html: html,
+        showConfirmButton: false,
+        showCancelButton: false,
+        width: "380px",
+        allowOutsideClick: false
+      });
+      
+      var req = {
+        what: "submitForm",
+        data: this.form
+      };
+      // console.log(req.data)
+      this.$socket
+        .makePostRequest(req)
+        .then(response => {
+          console.log(response.data.message);
+ 
+          this.$swal.fire("Success", response.data.message, "success");
+          location.reload();
+        })
+        .catch(error => {
+          // console.log(error);
+          this.$swal.fire("Error", error.message, "error");
+          this.form.question_answer = [];
+          
+ 
+        });
     },
 
     onFileChange (e) {
@@ -1648,7 +1738,7 @@ export default {
       }
       try {
         const tokenResponse = await this.myMSALObj.acquireTokenSilent(requestObj);
-        this.callMSGraphGet("https://graph.microsoft.com/v1.0/groups/df8ec304-ccda-4c33-b244-edb05f0e5731/members", tokenResponse.accessToken, this.userAPICallback);
+        this.callMSGraphGet("https://graph.microsoft.com/v1.0/groups/5d66bed8-adaa-45f3-8db6-a25148b5171b/members", tokenResponse.accessToken, this.userAPICallback);
       } catch (ex) {
         console.log(ex);
 
@@ -1694,6 +1784,19 @@ export default {
           console.log(err)
         })
     },
+    getStores: function(){
+      var req = {
+        what: "stores"
+      }
+      this.$socket.makeGetRequest(req)
+        .then(response => {
+            // console.log(response.data);
+            this.stores=response.data
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   },
 };
 </script>
@@ -1729,6 +1832,23 @@ export default {
 }
 
 /* Hide the browser's default radio button */
+.select-wrapper{
+  position: relative;	
+}
+.select-wrapper:after{
+  font-family: FontAwesome;
+  	content: '\f107';
+  	font-size: 28px;
+  	position: absolute;
+  	top: 12px;
+  	right: 20px;
+  	
+  	pointer-events: none;
+}
+select::-ms-expand {
+  display: none;
+}
+
 .customradio input {
   position: absolute;
   opacity: 0;

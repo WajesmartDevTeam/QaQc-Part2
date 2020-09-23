@@ -2,7 +2,8 @@ import axios from "axios";
 import Vue from "vue";
 import store from "./store";
 
-const URL = "https://qa.sundryhrms.website/api/";
+const URL = "http://qaqc.marketsquareng.website/api/";
+//const URL = "https://qa.sundryhrms.website/api/";
 
 export default {
     name: "Request",
@@ -83,13 +84,21 @@ export default {
         }
 
         var request_urls = {
-            ammvr: "amvrfeedback",
-            midamvfeedback: "midamvfeedback",
-            openingsoa: "openingsoa",
-            middaysoa: "midopeningsoa",
-            foodsafety: "krss",
-            greenbook: "kdo",
-            redbook: "redbook",
+            // storeext: "exterior",
+            // merchandise: "merchandise",
+            // production: "production",
+            // checkout: "checkout",
+            // insdis: "instore_displays",
+            // warehouse: "warehouse",
+            // staff: "staff",
+            // opportun: "opportunities",
+            // competition: "competition",
+            // general: "general",
+            // lossprev: "loss_prevention",
+            // storeopen: "store_opening",
+            // storeclose: "store_closing",
+            // nighttime: "night_time",
+            submitForm:"sectionforms"
         };
 
         if (request.params !== undefined) {
@@ -124,7 +133,7 @@ export default {
             "%cSending post request to: " + request_url,
             "color:#00ff00;font-size:14px;background:#000;"
         );
-        // console.log(data);
+        console.log(data);
 
         return new Promise((resolve, reject) => {
             axios

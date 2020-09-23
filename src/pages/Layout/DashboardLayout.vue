@@ -67,7 +67,7 @@
         <p>Night Time Visitation</p>
       </sidebar-link>
 
-      <sidebar-link to="/">
+      <sidebar-link to="/" style="margin-bottom:50px;margin-left:18px">
         <span
           style="height:25px"
           @click="logOut"

@@ -68,6 +68,7 @@ export default new Vuex.Store({
             };
 
             return new Promise((resolve, reject) => {
+                console.log("In store")
                 Vue.prototype.$socket
                     .makeGetRequest(req)
                     .then(response => {

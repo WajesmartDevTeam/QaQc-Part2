@@ -1781,7 +1781,6 @@ postForm () {
  
         });
     },
-    },
 
     onFileChange (e) {
       if (this.images.length > 4) {
@@ -1902,7 +1901,6 @@ postForm () {
           console.log(error);
         });
     }
-
   },
 };
 </script>

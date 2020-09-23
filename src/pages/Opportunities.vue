@@ -176,13 +176,13 @@
                 <md-card class="md-raised">
                   <md-card-content>
                     <p>
-                      Are there categories we can improve range and stocking
+                      Is there a room for another store in the city
                     </p>
 
                     <div
                       class="form-check-inline yes_no"
                       id="7"
-                      data-name="Are there categories we can improve range and stocking"
+                      data-name="Is there a room for another store in the city"
                     >
                       <label class="customradio"
                         ><span class="radiotextsty">YES</span>

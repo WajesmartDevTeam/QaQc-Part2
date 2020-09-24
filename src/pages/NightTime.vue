@@ -182,112 +182,6 @@
                     <div class="form-check-inline">
                       <label class="customradio"
                         ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio2" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio2" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio2" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio2" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio2" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>Are there any beggars and miscreants on the premises?</p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio2" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio2" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio2" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio2" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio2" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are the security personel / mopol active at their
-                      respective beats?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio2" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio2" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio2" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio2" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio2" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Is staff entrance door locked/secure and staff are not
-                      allowed unfettered exit to the building around this
-                      period?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
                         <input type="radio" name="radio3" value="1" />
                         <span class="checkmark"></span>
                       </label>
@@ -309,6 +203,112 @@
                       <label class="customradio"
                         ><span class="radiotextsty">5</span>
                         <input type="radio" name="radio3" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>Are there any beggars and miscreants on the premises?</p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio4" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio4" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio4" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio4" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio4" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>
+                      Are the security personel / mopol active at their
+                      respective beats?
+                    </p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio5" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio5" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio5" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio5" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio5" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>
+                      Is staff entrance door locked/secure and staff are not
+                      allowed unfettered exit to the building around this
+                      period?
+                    </p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio6" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio6" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio6" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio6" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio6" value="5" />
                         <span class="checkmark"></span>
                       </label>
                     </div>

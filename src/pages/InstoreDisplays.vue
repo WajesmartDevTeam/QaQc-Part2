@@ -419,6 +419,19 @@
                   ></textarea>
                 </div>
 
+                <md-button
+                  @click="toggle = !toggle"
+                  class="btn md-raised md-info"
+                  title="Assign tasks to be carried out"
+                  >Action Plans</md-button
+                >
+                <md-button
+                  @click="image = !image"
+                  class="btn md-raised md-success"
+                  title="Upload maximum of 5 images"
+                  >Upload Image(s)</md-button
+                >
+
                 <div v-show="toggle">
                   <h5 class="subtitle">
                     Assign Tasks on things that need improvement / Correction
@@ -431,11 +444,11 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td id="6" class="" data-name="task">
+                        <td id="24" class="" data-name="task">
                           <label for="" class="label"> </label>
                           <input class="form-control" type="text" name="" />
                         </td>
-                        <td id="7" class="" data-name="assignedTo">
+                        <td id="25" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
                           <input
                             id="task1"
@@ -453,7 +466,7 @@
                           >
                           </v-select>
                         </td>
-                        <td id="8" class="" data-name="dueDate">
+                        <td id="26" class="" data-name="dueDate">
                           <label for="" class="label"> </label>
                           <input
                             id="taskdate1"
@@ -464,11 +477,11 @@
                         </td>
                       </tr>
                       <tr>
-                        <td id="9" class="" data-name="task">
+                        <td id="28" class="" data-name="task">
                           <label for="" class="label"> </label>
                           <input class="form-control" type="text" name="" />
                         </td>
-                        <td id="10" class="" data-name="assignedTo">
+                        <td id="29" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
                           <input
                             id="task2"
@@ -486,7 +499,7 @@
                           >
                           </v-select>
                         </td>
-                        <td id="11" class="" data-name="dueDate">
+                        <td id="30" class="" data-name="dueDate">
                           <label for="" class="label"> </label>
                           <input
                             id="taskdate2"
@@ -497,11 +510,11 @@
                         </td>
                       </tr>
                       <tr>
-                        <td id="12" class="" data-name="task">
+                        <td id="32" class="" data-name="task">
                           <label for="" class="label"> </label>
                           <input class="form-control" type="text" name="" />
                         </td>
-                        <td id="13" class="" data-name="assignedTo">
+                        <td id="33" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
                           <input
                             id="task3"
@@ -519,7 +532,7 @@
                           >
                           </v-select>
                         </td>
-                        <td id="14" class="" data-name="dueDate">
+                        <td id="34" class="" data-name="dueDate">
                           <label for="" class="label"> </label>
                           <input
                             id="taskdate3"
@@ -530,11 +543,11 @@
                         </td>
                       </tr>
                       <tr>
-                        <td id="15" class="" data-name="task">
+                        <td id="36" class="" data-name="task">
                           <label for="" class="label"> </label>
                           <input class="form-control" type="text" name="" />
                         </td>
-                        <td id="16" class="" data-name="assignedTo">
+                        <td id="37" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
                           <input
                             id="task4"
@@ -552,7 +565,7 @@
                           >
                           </v-select>
                         </td>
-                        <td id="17" class="" data-name="dueDate">
+                        <td id="38" class="" data-name="dueDate">
                           <label for="" class="label"> </label>
                           <input
                             id="taskdate4"
@@ -563,11 +576,11 @@
                         </td>
                       </tr>
                       <tr>
-                        <td id="18" class="" data-name="task">
+                        <td id="40" class="" data-name="task">
                           <label for="" class="label"> </label>
                           <input class="form-control" type="text" name="" />
                         </td>
-                        <td id="19" class="" data-name="assignedTo">
+                        <td id="41" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
                           <input
                             id="task5"
@@ -585,7 +598,7 @@
                           >
                           </v-select>
                         </td>
-                        <td id="20" class="" data-name="dueDate">
+                        <td id="42" class="" data-name="dueDate">
                           <label for="" class="label"> </label>
                           <input
                             id="taskdate5"
@@ -634,18 +647,6 @@
                     <!-- <div><img id="imgprv" :height="200" :src="thumbnail.image" /></div> -->
                   </div>
                 </div>
-                <md-button
-                  @click="toggle = !toggle"
-                  class="btn md-raised md-info"
-                  title="Assign tasks to be carried out"
-                  >Action Plans</md-button
-                >
-                <md-button
-                  @click="image = !image"
-                  class="btn md-raised md-success"
-                  title="Upload maximum of 5 images"
-                  >Upload Image(s)</md-button
-                >
                 <br />
                 <div class="float-right">
                   <button

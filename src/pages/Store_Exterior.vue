@@ -732,6 +732,19 @@
                   ></textarea>
                 </div>
 
+                <md-button
+                  @click="toggle = !toggle"
+                  class="btn md-raised md-info"
+                  title="Assign tasks to be carried out"
+                  >Action Plans</md-button
+                >
+                <md-button
+                  @click="image = !image"
+                  class="btn md-raised md-success"
+                  title="Upload maximum of 5 images"
+                  >Upload Image(s)</md-button
+                >
+
                 <div v-show="toggle">
                   <h5 class="subtitle">
                     Assign Tasks on things that need improvement / Correction
@@ -947,18 +960,7 @@
                     <!-- <div><img id="imgprv" :height="200" :src="thumbnail.image" /></div> -->
                   </div>
                 </div>
-                <md-button
-                  @click="toggle = !toggle"
-                  class="btn md-raised md-info"
-                  title="Assign tasks to be carried out"
-                  >Action Plans</md-button
-                >
-                <md-button
-                  @click="image = !image"
-                  class="btn md-raised md-success"
-                  title="Upload maximum of 5 images"
-                  >Upload Image(s)</md-button
-                >
+
                 <br />
                 <div class="float-right">
                   <button
@@ -1346,7 +1348,7 @@ export default {
       this.$axios
         .post(url, data, config)
         .then(response => {
-          console.log(response)
+          //console.log(response)
         })
         .catch(err => {
           console.log(err);

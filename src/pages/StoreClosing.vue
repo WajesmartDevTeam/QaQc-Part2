@@ -749,9 +749,10 @@ export default {
             };
             taskplanner.push({
               task: title,
-              assigned_to: user,
+              assignedto: user,
               status: "pending",
-              due_date: due_date
+              due_date: due_date,
+              store_id: this.form.store_id
             });
             console.log(plannerTask);
 

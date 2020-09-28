@@ -1169,9 +1169,10 @@ export default {
             };
             taskplanner.push({
               task: title,
-              assigned_to: user,
+              assignedto: user,
               status: "pending",
-              due_date: due_date
+              due_date: due_date,
+              store_id: this.form.store_id
             });
             //console.log(plannerTask)
 
@@ -1229,7 +1230,7 @@ export default {
           console.log(response.data.message);
 
           this.$swal.fire("Success", response.data.message, "success");
-          location.reload();
+          //location.reload();
         })
         .catch(error => {
           // console.log(error);
@@ -1345,7 +1346,7 @@ export default {
       this.$axios
         .post(url, data, config)
         .then(response => {
-          // console.log(response)
+          console.log(response)
         })
         .catch(err => {
           console.log(err);

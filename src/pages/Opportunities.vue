@@ -250,39 +250,7 @@
                   </md-card-content>
                 </md-card>
 
-                <h5 class="subtitle">Comments</h5>
-                <div
-                  id="10"
-                  class="form-group row question"
-                  data-name="Top 5 things the Store did well"
-                >
-                  <label for="staticEmail" class="col-5 col-form-label"
-                    >Top 5 things the store did well: </label
-                  ><br />
-                  <textarea
-                    rows="5"
-                    cols="138"
-                    class="form-box"
-                    type="text"
-                  ></textarea>
-                </div>
-
-                <div
-                  id="11"
-                  class="form-group row question"
-                  data-name="Top 5 things the Store needs to improve on"
-                >
-                  <label for="" class=" col-5 form-label"
-                    >Top 5 things the store needs to improve on: </label
-                  ><br />
-                  <textarea
-                    rows="5"
-                    cols="138"
-                    style="margin-left:13px"
-                    type="text"
-                  ></textarea>
-                </div>
-
+                
                 <md-button
                   @click="toggle = !toggle"
                   class="btn md-raised md-info"
@@ -514,7 +482,7 @@
                 <br />
                 <div class="float-right">
                   <button
-                    @click="submitForm"
+                    @click="checkForm"
                     class="btn md-raised md-warning text-white btn-warning "
                     style="margin-bottom:10px"
                   >
@@ -639,8 +607,39 @@ export default {
 
   methods: {
     saveContinue() {
-      this.submitForm();
+      this.checkForm();
       this.$router.push({ path: "competition" });
+    },
+    checkForm() {
+      let radioButtonGroups = document.getElementsByClassName(
+        "form-check-inline"
+      );
+      let outerStatus = "";
+      let count = 0;
+      for (let group of radioButtonGroups) {
+        let status = "";
+        //console.log(group);
+        group = group.querySelectorAll("input");
+        //console.log(group);
+        for (let el of group) {
+          if (el.checked) {
+            status = "filled";
+            console.log("filled");
+            break;
+          }
+        }
+        if (status === "filled") {
+          count++;
+          continue;
+          }
+        else {
+          alert("Fill all fields!!!");
+          break;
+          }
+      }
+      if (count === radioButtonGroups.length) {
+        this.submitForm();
+      }
     },
     submitForm() {
       let total_point = 0;

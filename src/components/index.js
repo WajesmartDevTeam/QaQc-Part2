@@ -5,8 +5,4 @@ import StatsCard from "./Cards/StatsCard.vue";
 // Tables
 import OrderedTable from "./Tables/OrderedTable.vue";
 
-export {
-    ChartCard,
-    StatsCard,
-    OrderedTable,
-};
+export { ChartCard, StatsCard, OrderedTable };

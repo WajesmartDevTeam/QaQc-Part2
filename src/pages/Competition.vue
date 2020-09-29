@@ -4,7 +4,7 @@
       <div class="md-layout-item md-size-100">
         <md-card>
           <md-card-header data-background-color="orange">
-            <h4 class="title">Checkout</h4>
+            <h4 class="title">Competition</h4>
           </md-card-header>
           <md-card-content>
             <form id="" role="form" v-on:submit.prevent="">
@@ -93,47 +93,36 @@
 
                 <br />
 
-                <div>
-                  <h5 class="subtitle"><u>Scoring</u></h5>
-                  <ol class="d-flex justify-content-between">
-                    <li>Unacceptable</li>
-                    <li>Fair</li>
-                    <li>Satisfactory</li>
-                    <li>Good</li>
-                    <li>Exceeds expectations</li>
-                  </ol>
-                </div>
-
                 <!-- questions -->
 
                 <md-card class="md-raised">
                   <md-card-content>
-                    <p>Are counters clean and free of liter/debris?</p>
+                    <p>Are there any competitor prices of note?</p>
 
-                    <div class="form-check-inline">
+                    <div
+                      class="form-check-inline yes_no"
+                      id="4"
+                      data-name="Are there any competitor prices of note?"
+                    >
                       <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio1" value="1" />
+                        ><span class="radiotextsty">YES</span>
+                        <input
+                          v-model="checked"
+                          type="radio"
+                          name="question1"
+                          value="YES"
+                        />
                         <span class="checkmark"></span>
                       </label>
+
                       <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio1" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio1" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio1" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio1" value="5" />
+                        ><span class="radiotextsty">NO</span>
+                        <input
+                          v-model="checked"
+                          type="radio"
+                          name="question1"
+                          value="NO"
+                        />
                         <span class="checkmark"></span>
                       </label>
                     </div>
@@ -141,32 +130,22 @@
                 </md-card>
                 <md-card class="md-raised">
                   <md-card-content>
-                    <p>Are all counters manned?</p>
+                    <p>Any activation in competing stores</p>
 
-                    <div class="form-check-inline">
+                    <div
+                      class="form-check-inline yes_no"
+                      id="5"
+                      data-name="Any activation in competing stores"
+                    >
                       <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio2" value="1" />
+                        ><span class="radiotextsty">YES</span>
+                        <input type="radio" name="question2" value="YES" />
                         <span class="checkmark"></span>
                       </label>
+
                       <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio2" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio2" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio2" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio2" value="5" />
+                        ><span class="radiotextsty">NO</span>
+                        <input type="radio" name="question2" value="NO" />
                         <span class="checkmark"></span>
                       </label>
                     </div>
@@ -175,174 +154,24 @@
                 <md-card class="md-raised">
                   <md-card-content>
                     <p>
-                      Do cashiers appear properly trained to handle the task?
+                      Are there any new competitors or competitor activities in
+                      the area?
                     </p>
 
-                    <div class="form-check-inline">
+                    <div
+                      class="form-check-inline yes_no"
+                      id="6"
+                      data-name="Are there any new competitors or competitor activities in the area?"
+                    >
                       <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio3" value="1" />
+                        ><span class="radiotextsty">YES</span>
+                        <input type="radio" name="question3" value="YES" />
                         <span class="checkmark"></span>
                       </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio3" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio3" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio3" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio3" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Do all cashiers have functional POS terminals for payment
-                      collection?
-                    </p>
 
-                    <div class="form-check-inline">
                       <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio4" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio4" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio4" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio4" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio4" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are cashier activities being actively supervised by a
-                      manager/supervisor/security?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio5" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio5" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio5" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio5" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio5" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>Are the queues manageable?</p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio6" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio6" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio6" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio6" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio6" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are customers serviced within 3 minutes? (Confirm
-                      queue/checkout time per customer)
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio7" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio7" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio7" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio7" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio7" value="5" />
+                        ><span class="radiotextsty">NO</span>
+                        <input type="radio" name="question3" value="NO" />
                         <span class="checkmark"></span>
                       </label>
                     </div>
@@ -351,7 +180,7 @@
 
                 <h5 class="subtitle">Comments</h5>
                 <div
-                  id="4"
+                  id="7"
                   class="form-group row question"
                   data-name="5 things the Store did well"
                 >
@@ -367,7 +196,7 @@
                 </div>
 
                 <div
-                  id="5"
+                  id="8"
                   class="form-group row question"
                   data-name="5 things the Store needs to improve on"
                 >
@@ -650,6 +479,7 @@ export default {
       username: "",
       stores: [],
       store_manager: "",
+      checked: "",
       o365_users: [],
       all_users: [],
       tasks: {
@@ -663,9 +493,9 @@ export default {
       image: false,
       images: [],
       form: {
-        section_name: "Checkout",
-        section_type: "CH",
-        scoring_type: "scoring",
+        section_name: "Competition",
+        section_type: "CO",
+        scoring_type: "non-scoring",
         total_point: "",
         total_percent: "",
         taskplanner: [],
@@ -739,7 +569,7 @@ export default {
   methods: {
     saveContinue() {
       this.submitForm();
-      this.$router.push({ path: "instore_displays" });
+      this.$router.push({ path: "general" });
     },
     submitForm() {
       let total_point = 0;
@@ -772,6 +602,25 @@ export default {
         });
       });
       this.form.question = qa;
+
+      //yes_no questions
+      document.querySelectorAll(".yes_no").forEach(i => {
+        let index = i.id;
+        let qtext = i.dataset.name.replace(/\n/g, " ");
+        let ans;
+        i.querySelectorAll("label").forEach(j => {
+          if (j.childNodes[1].checked) {
+            ans = j.childNodes[1].value;
+          }
+        });
+        qa.push({
+          questionno: index,
+          questiontext: qtext,
+          answer: ans
+        });
+      });
+      this.form.question = qa;
+
       //microsoft planner-action tasks
 
       document
@@ -808,7 +657,6 @@ export default {
 
             let plannerTask = {
               planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
-
               title: title,
               dueDateTime: due_date,
               assignments: {}
@@ -1021,6 +869,17 @@ export default {
 };
 </script>
 <style scoped>
+.form-box {
+  border: 1px solid #dee2e6;
+  height: 120px !important;
+  padding: 5px;
+}
+.md-card img {
+  width: 200px !important;
+  height: 200px !important;
+}
+/* Custom Radio Button Start*/
+
 .select-wrapper {
   position: relative;
 }
@@ -1037,17 +896,6 @@ export default {
 select::-ms-expand {
   display: none;
 }
-
-.form-box {
-  border: 1px solid #dee2e6;
-  height: 120px !important;
-  padding: 5px;
-}
-.md-card img {
-  width: 200px !important;
-  height: 200px !important;
-}
-/* Custom Radio Button Start*/
 
 .radiotextsty {
   color: #a5a4bf;

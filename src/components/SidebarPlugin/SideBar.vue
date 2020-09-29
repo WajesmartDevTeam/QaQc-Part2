@@ -6,25 +6,18 @@
     :style="sidebarStyle"
   >
     <div class="logo">
-      <a
-        href="#"
-        class="simple-text logo-mini"
-      >
+      <a href="#" class="simple-text logo-mini">
         <div class="logo-img">
-          <img
-            :src="imgLogo"
-            alt=""
-          />
+          <img :src="imgLogo" alt="" />
         </div>
       </a>
 
-      <a
-        href="/"
-        class="simple-text logo-normal"
-      >
+      <a href="/" class="simple-text logo-normal">
         {{ title }}
       </a>
-      <p style="font-size:13px;margin-top: -2px;font-family: cursive;">{{subtitle}}</p>
+      <p style="font-size:13px;margin-top: -2px;font-family: cursive;">
+        {{ subtitle }}
+      </p>
     </div>
     <div class="sidebar-wrapper">
       <slot name="content"></slot>
@@ -84,13 +77,13 @@ export default {
       default: true
     }
   },
-  provide () {
+  provide() {
     return {
       autoClose: this.autoClose
     };
   },
   computed: {
-    sidebarStyle () {
+    sidebarStyle() {
       return {
         backgroundImage: `url(${this.backgroundImage})`
       };

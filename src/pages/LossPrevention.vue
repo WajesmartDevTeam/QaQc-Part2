@@ -4,7 +4,7 @@
       <div class="md-layout-item md-size-100">
         <md-card>
           <md-card-header data-background-color="orange">
-            <h4 class="title">Store Exterior</h4>
+            <h4 class="title">Loss Prevention</h4>
           </md-card-header>
           <md-card-content>
             <form id="" role="form" v-on:submit.prevent="">
@@ -109,7 +109,8 @@
                 <md-card class="md-raised">
                   <md-card-content>
                     <p>
-                      Are all signages clean and in good working conditions?
+                      Does location have a functioning alarm system? Test same
+                      yourself please
                     </p>
 
                     <div class="form-check-inline">
@@ -144,8 +145,8 @@
                 <md-card class="md-raised">
                   <md-card-content>
                     <p>
-                      Are customers entrance and exit door in good working
-                      condition with safety signs on them?
+                      Is alarm code known to others apart from opening
+                      manager(s)?
                     </p>
 
                     <div class="form-check-inline">
@@ -177,11 +178,48 @@
                     </div>
                   </md-card-content>
                 </md-card>
+
                 <md-card class="md-raised">
                   <md-card-content>
                     <p>
-                      Are the floor tiles properly cleaned and in good
-                      condition?
+                      Does location have a key control log for all store keys?
+                    </p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio2" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio2" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio2" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio2" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio2" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>
+                      Are CCTV operators on time, manning their station,
+                      vigilant and well behaved?
                     </p>
 
                     <div class="form-check-inline">
@@ -215,7 +253,7 @@
                 </md-card>
                 <md-card class="md-raised">
                   <md-card-content>
-                    <p>Is the store lightings fully functional?</p>
+                    <p>Are all cameras functional?</p>
 
                     <div class="form-check-inline">
                       <label class="customradio"
@@ -248,9 +286,75 @@
                 </md-card>
                 <md-card class="md-raised">
                   <md-card-content>
+                    <p>Does the delivery area have a functional camera?</p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio5" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio5" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio5" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio5" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio5" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>Are high theft items secured and properly policed?</p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio5" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio5" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio5" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio5" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio5" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
                     <p>
-                      Is waste stored in appropriate waste or recycling storage
-                      areas?
+                      Does location conduct regular stock counts? Are results
+                      satisfactory?
                     </p>
 
                     <div class="form-check-inline">
@@ -285,8 +389,43 @@
                 <md-card class="md-raised">
                   <md-card-content>
                     <p>
-                      Is the property kept clear of litter, organic waste,
-                      hazardous materials, etc?
+                      Are damaged/defective inventory kept secure and orderly?
+                    </p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio5" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio5" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio5" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio5" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio5" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>
+                      Are staff restricted from performing self or family
+                      purchases?
                     </p>
 
                     <div class="form-check-inline">
@@ -320,7 +459,9 @@
                 </md-card>
                 <md-card class="md-raised">
                   <md-card-content>
-                    <p>Is the car park area cleaned and controlled?</p>
+                    <p>
+                      Who performs high risk actions on the POS e.g. refunds etc
+                    </p>
 
                     <div class="form-check-inline">
                       <label class="customradio"
@@ -353,7 +494,7 @@
                 </md-card>
                 <md-card class="md-raised">
                   <md-card-content>
-                    <p>Are parking lots clearly marked and delineated?</p>
+                    <p>Are all critical areas manned by security personel?</p>
 
                     <div class="form-check-inline">
                       <label class="customradio"
@@ -386,7 +527,7 @@
                 </md-card>
                 <md-card class="md-raised">
                   <md-card-content>
-                    <p>Are parking signage and direction present and clean?</p>
+                    <p>Is there a competent security supervisor on ground?</p>
 
                     <div class="form-check-inline">
                       <label class="customradio"
@@ -412,287 +553,6 @@
                       <label class="customradio"
                         ><span class="radiotextsty">5</span>
                         <input type="radio" name="radio9" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>Is the store overall impression neat and clean?</p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio10" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio10" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio10" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio10" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio10" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are the electrical panels and distribution boxes
-                      closed/secured from external access?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio11" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio11" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio11" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio11" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio11" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are there any unplanned organic growths (e.g.algae etc) in
-                      the premises - check corners?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio12" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio12" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio12" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio12" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio12" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are there any electrical cables or switches exposed and
-                      presenting a clear and present danger to the public?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio13" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio13" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio13" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio13" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio13" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are there areas of the building exterior that require
-                      maintenance?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio14" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio14" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio14" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio14" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio14" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are the back areas free from liter and kept clean and free
-                      of smells?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio15" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio15" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio15" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio15" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio15" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>
-                      Are security personel stationed at their respective beats?
-                    </p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio16" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio16" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio16" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio16" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio16" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>Are mopol personel stationed at their post?</p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio17" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio17" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio17" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio17" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio17" value="5" />
                         <span class="checkmark"></span>
                       </label>
                     </div>
@@ -960,7 +820,6 @@
                     <!-- <div><img id="imgprv" :height="200" :src="thumbnail.image" /></div> -->
                   </div>
                 </div>
-
                 <br />
                 <div class="float-right">
                   <button
@@ -1014,8 +873,8 @@ export default {
       image: false,
       images: [],
       form: {
-        section_name: "Store Exterior",
-        section_type: "SE",
+        section_name: "Loss Prevention",
+        section_type: "LO",
         scoring_type: "scoring",
         total_point: "",
         total_percent: "",
@@ -1090,7 +949,7 @@ export default {
   methods: {
     saveContinue() {
       this.submitForm();
-      this.$router.push({ path: "merchandise" });
+      this.$router.push({ path: "store_opening" });
     },
     submitForm() {
       let total_point = 0;
@@ -1122,9 +981,7 @@ export default {
           answer: ans
         });
       });
-
       this.form.question = qa;
-
       //microsoft planner-action tasks
 
       document
@@ -1176,9 +1033,9 @@ export default {
               due_date: due_date,
               store_id: this.form.store_id
             });
-            //console.log(plannerTask)
+            console.log(plannerTask);
 
-            this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask));
+            //   this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask))
           }
         });
 
@@ -1232,7 +1089,7 @@ export default {
           console.log(response.data.message);
 
           this.$swal.fire("Success", response.data.message, "success");
-          //location.reload();
+          location.reload();
         })
         .catch(error => {
           // console.log(error);
@@ -1348,12 +1205,13 @@ export default {
       this.$axios
         .post(url, data, config)
         .then(response => {
-          //console.log(response)
+          // console.log(response)
         })
         .catch(err => {
           console.log(err);
         });
     },
+
     getStores: function() {
       var req = {
         what: "stores"
@@ -1403,6 +1261,14 @@ export default {
 }
 
 /* Hide the browser's default radio button */
+.customradio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+
 .select-wrapper {
   position: relative;
 }
@@ -1420,13 +1286,6 @@ select::-ms-expand {
   display: none;
 }
 
-.customradio input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom radio button */
 .checkmark {
   position: absolute;
   top: 0;

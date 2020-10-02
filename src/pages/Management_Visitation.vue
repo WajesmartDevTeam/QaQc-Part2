@@ -89,7 +89,7 @@
                 <br />
                 <div class="float-right">
                   <button
-                    @click="submitForm"
+                    @click="checkForm"
                     class="btn md-raised md-warning text-white btn-warning "
                     style="margin-bottom:10px"
                   >
@@ -276,7 +276,39 @@ export default {
 
   methods: {
     saveContinue() {
+      this.checkForm();
       this.$router.push({ path: "exterior" });
+    },
+    checkForm() {
+      let radioButtonGroups = document.getElementsByClassName(
+        "form-check-inline"
+      );
+      let outerStatus = "";
+      let count = 0;
+      for (let group of radioButtonGroups) {
+        let status = "";
+        //console.log(group);
+        group = group.querySelectorAll("input");
+        //console.log(group);
+        for (let el of group) {
+          if (el.checked) {
+            status = "filled";
+            console.log("filled");
+            break;
+          }
+        }
+        if (status === "filled") {
+          count++;
+          continue;
+          }
+        else {
+          alert("Fill all fields!!!");
+          break;
+          }
+      }
+      if (count === radioButtonGroups.length) {
+        this.submitForm();
+      }
     },
     submitForm() {
       let points = this.getTotal();

@@ -58,7 +58,7 @@
                     <select
                       class="form-control"
                       id="location"
-                      v-model="form.store_id"
+                      v-model="store"
                       title="Select store visited"
                       required
                     >
@@ -617,6 +617,7 @@ export default {
     return {
       username: "",
       stores: [],
+      store: "",
       store_manager: "",
       o365_users: [],
       all_users: [],
@@ -680,12 +681,13 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    "form.store_id": function(val) {
+    "store": function(val) {
       this.stores.forEach(i => {
         if (i.id === val) {
           this.store_manager = i.store_admin_name;
         }
       });
+      this.form.store_id = val;
     },
     "tasks.task1": function(val) {
       document.getElementById("task1").value = val;
@@ -713,7 +715,6 @@ export default {
       let radioButtonGroups = document.getElementsByClassName(
         "form-check-inline"
       );
-      let outerStatus = "";
       let count = 0;
       for (let group of radioButtonGroups) {
         let status = "";
@@ -750,7 +751,9 @@ export default {
         }
       });
       this.form.total_point = total_point;
-      this.form.total_percent = Math.ceil((this.form.total_point / 85) * 100);
+      this.form.total_percent = Math.ceil(
+        document.getElementsByClassName("form-check-inline").length * 5
+      );
 
       //data info
       let qa = [];
@@ -1011,6 +1014,8 @@ export default {
         .then(response => {
           // console.log(response.data);
           this.stores = response.data;
+          let store = this.$store.getters.store;
+          this.store = store.id;
         })
         .catch(error => {
           console.log(error);

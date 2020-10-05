@@ -12,6 +12,7 @@ export default new Vuex.Store({
     user: "",
     role: "",
     stores: [],
+    store:{},
     all_users: [],
     ammvr: {},
     midmvr: {},
@@ -36,6 +37,9 @@ export default new Vuex.Store({
     },
     updateStores(state, stores) {
       state.stores = stores;
+    },
+    setStore(state, data){
+      state.store=data;
     },
     updateAmmvr(state, report) {
       state.ammvr = report;
@@ -81,6 +85,9 @@ export default new Vuex.Store({
           });
       });
     },
+    setStore({commit}, data){
+      commit( "setStore",data);
+    },
     updateAmmvr({ commit }, data) {
       // console.log(data)
       try {
@@ -114,6 +121,7 @@ export default new Vuex.Store({
   getters: {
     isLoggedIn: state => state.loggedIn,
     stores: state => state.stores,
+    store:state=>state.store,
     ammvr: state => state.ammvr,
     midmvr: state => state.midmvr,
     logout: state => state.logOut,

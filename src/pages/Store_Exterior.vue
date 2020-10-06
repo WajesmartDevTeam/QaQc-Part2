@@ -699,7 +699,6 @@
                   </md-card-content>
                 </md-card>
 
-
                 <md-button
                   @click="toggle = !toggle"
                   class="btn md-raised md-info"
@@ -1057,6 +1056,12 @@ export default {
 
   methods: {
     saveContinue() {
+      this.stores.forEach(i => {
+        if (i.id == this.form.store_id) {
+          this.$store.dispatch("setStore", i);
+        }
+      });
+
       this.checkForm();
       this.$router.push({ path: "merchandise" });
     },
@@ -1064,7 +1069,6 @@ export default {
       let radioButtonGroups = document.getElementsByClassName(
         "form-check-inline"
       );
-      let outerStatus = "";
       let count = 0;
       for (let group of radioButtonGroups) {
         let status = "";
@@ -1081,11 +1085,10 @@ export default {
         if (status === "filled") {
           count++;
           continue;
-          }
-        else {
+        } else {
           alert("Fill all fields!!!");
           break;
-          }
+        }
       }
       if (count === radioButtonGroups.length) {
         this.submitForm();
@@ -1101,7 +1104,9 @@ export default {
         }
       });
       this.form.total_point = total_point;
-      this.form.total_percent = Math.ceil((this.form.total_point / 85) * 100);
+      this.form.total_percent = Math.ceil(
+        document.getElementsByClassName("form-check-inline").length * 5
+      );
 
       //data info
       let qa = [];
@@ -1231,7 +1236,7 @@ export default {
           console.log(response.data.message);
 
           this.$swal.fire("Success", response.data.message, "success");
-          //location.reload();
+          ////location.reload();
         })
         .catch(error => {
           // console.log(error);

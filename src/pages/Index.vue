@@ -198,7 +198,7 @@ export default {
             })
             .then(() => {
               this.$store.dispatch("logout", true);
-              location.reload();
+              //location.reload();
             });
         }
       });

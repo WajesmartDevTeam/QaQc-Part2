@@ -188,72 +188,6 @@
                     <div class="form-check-inline">
                       <label class="customradio"
                         ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio2" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio2" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio2" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio2" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio2" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>Are staff made to exit the building at the same time?</p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
-                        <input type="radio" name="radio2" value="1" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">2</span>
-                        <input type="radio" name="radio2" value="2" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">3</span>
-                        <input type="radio" name="radio2" value="3" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">4</span>
-                        <input type="radio" name="radio2" value="4" />
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="customradio"
-                        ><span class="radiotextsty">5</span>
-                        <input type="radio" name="radio2" value="5" />
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </md-card-content>
-                </md-card>
-                <md-card class="md-raised">
-                  <md-card-content>
-                    <p>Are staff being properly searched on exit?</p>
-
-                    <div class="form-check-inline">
-                      <label class="customradio"
-                        ><span class="radiotextsty">1</span>
                         <input type="radio" name="radio3" value="1" />
                         <span class="checkmark"></span>
                       </label>
@@ -280,8 +214,73 @@
                     </div>
                   </md-card-content>
                 </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>Are staff made to exit the building at the same time?</p>
 
-                
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio4" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio4" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio4" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio4" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio4" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+                <md-card class="md-raised">
+                  <md-card-content>
+                    <p>Are staff being properly searched on exit?</p>
+
+                    <div class="form-check-inline">
+                      <label class="customradio"
+                        ><span class="radiotextsty">1</span>
+                        <input type="radio" name="radio5" value="1" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">2</span>
+                        <input type="radio" name="radio5" value="2" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">3</span>
+                        <input type="radio" name="radio5" value="3" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">4</span>
+                        <input type="radio" name="radio5" value="4" />
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="customradio"
+                        ><span class="radiotextsty">5</span>
+                        <input type="radio" name="radio5" value="5" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </md-card-content>
+                </md-card>
+
                 <md-button
                   @click="toggle = !toggle"
                   class="btn md-raised md-info"
@@ -613,7 +612,7 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    "store": function(val) {
+    store: function(val) {
       this.stores.forEach(i => {
         if (i.id === val) {
           this.store_manager = i.store_admin_name;
@@ -663,11 +662,10 @@ export default {
         if (status === "filled") {
           count++;
           continue;
-          }
-        else {
+        } else {
           alert("Fill all fields!!!");
           break;
-          }
+        }
       }
       if (count === radioButtonGroups.length) {
         this.submitForm();
@@ -813,7 +811,7 @@ export default {
           console.log(response.data.message);
 
           this.$swal.fire("Success", response.data.message, "success");
-          location.reload();
+          //location.reload();
         })
         .catch(error => {
           // console.log(error);

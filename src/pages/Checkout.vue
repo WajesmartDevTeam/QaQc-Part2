@@ -349,7 +349,6 @@
                   </md-card-content>
                 </md-card>
 
-                
                 <md-button
                   @click="toggle = !toggle"
                   class="btn md-raised md-info"
@@ -681,7 +680,7 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    "store": function(val) {
+    store: function(val) {
       this.stores.forEach(i => {
         if (i.id === val) {
           this.store_manager = i.store_admin_name;
@@ -731,11 +730,10 @@ export default {
         if (status === "filled") {
           count++;
           continue;
-          }
-        else {
+        } else {
           alert("Fill all fields!!!");
           break;
-          }
+        }
       }
       if (count === radioButtonGroups.length) {
         this.submitForm();
@@ -882,7 +880,7 @@ export default {
           console.log(response.data.message);
 
           this.$swal.fire("Success", response.data.message, "success");
-          location.reload();
+          //location.reload();
         })
         .catch(error => {
           // console.log(error);

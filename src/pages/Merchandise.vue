@@ -1300,7 +1300,7 @@ export default {
           console.log(response.data.message);
 
           this.$swal.fire("Success", response.data.message, "success");
-          location.reload();
+          //location.reload();
         })
         .catch(error => {
           // console.log(error);

@@ -49,10 +49,10 @@
                 <div
                   id="2"
                   class="form-group row question loc"
-                  data-name="Restaurant/Location"
+                  data-name="Store"
                 >
                   <label for="staticEmail" class="col-3 col-form-label"
-                    >Restaurant/Location</label
+                    >Store</label
                   >
                   <div class="col-9 select-wrapper">
                     <select
@@ -67,7 +67,7 @@
                         v-for="(store, index) in stores"
                         :key="index"
                         v-bind:value="store.id"
-                        >{{ store.address + ", " + store.location }}</option
+                        >{{ store.name }}</option
                       >
                     </select>
                   </div>
@@ -81,6 +81,21 @@
                     >Branch Manager on Duty</label
                   >
                   <div class="col-9">
+                    <!-- <select
+                      class="form-control"
+                      id="manager"
+                      v-model="form.store_id"
+                      title="Select store visited"
+                      required
+                    >
+                      <option hidden value="">select manager...</option>
+                      <option
+                        v-for="(manager, index) in managers"
+                        :key="index"
+                        v-bind:value="manager.id"
+                        >{{ manager.first_name + ' ' + manager.last_name }}</option
+                      >
+                    </select> -->
                     <input
                       type="text"
                       class="form-control"
@@ -1226,7 +1241,7 @@ export default {
       });
 
       var req = {
-        what: "submitForm",
+        what: "store_exterior",
         data: this.form
       };
       // console.log(req.data)
@@ -1365,8 +1380,9 @@ export default {
       this.$socket
         .makeGetRequest(req)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.stores = response.data;
+
         })
         .catch(error => {
           console.log(error);

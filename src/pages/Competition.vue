@@ -604,6 +604,8 @@ export default {
             });
         });
         this.form.question_answer = data;
+        this.form.username = this.username;
+        this.form.store_manager = this.store_manager;
     },
     submitForm() {
         this.genQuestionAnswers();

@@ -843,6 +843,8 @@ export default {
             });
         });
         this.form.question_answer = data;
+        this.form.username = this.username;
+        this.form.store_manager = this.store_manager;
     },
     submitForm() {
         this.genQuestionAnswers();
@@ -857,7 +859,8 @@ export default {
         }
       });
       this.form.total_point = total_point;
-      this.form.total_percent = (total_point / possible_points) * 100
+      this.form.total_percent = (total_point / possible_points) * 100;
+      this.form.possible_points = possible_points;
 
       //data info
       let qa = [];

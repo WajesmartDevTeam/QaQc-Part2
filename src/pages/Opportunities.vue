@@ -46,19 +46,19 @@
                     >
                   </div>
                 </div> -->
-                <div
+                 <div
                   id="2"
                   class="form-group row question loc"
-                  data-name="Restaurant/Location"
+                  data-name="Store"
                 >
                   <label for="staticEmail" class="col-3 col-form-label"
-                    >Restaurant/Location</label
+                    >Store</label
                   >
                   <div class="col-9 select-wrapper">
                     <select
-                      class="form-control "
+                      class="form-control"
                       id="location"
-                      v-model="store"
+                      v-model="form.store_id"
                       title="Select store visited"
                       required
                     >
@@ -67,7 +67,7 @@
                         v-for="(store, index) in stores"
                         :key="index"
                         v-bind:value="store.id"
-                        >{{ store.address + ", " + store.location }}</option
+                        >{{ store.name }}</option
                       >
                     </select>
                   </div>
@@ -81,13 +81,28 @@
                     >Branch Manager on Duty</label
                   >
                   <div class="col-9">
-                    <input
+                    <select
+                      class="form-control"
+                      id="manager"
+                      v-model="store_manager"
+                      title="Select Manager"
+                      required
+                    >
+                      <option hidden value="">select manager...</option>
+                      <option
+                        v-for="(manager, index) in managers"
+                        :key="index"
+                        v-bind:value="manager.name"
+                        >{{ manager.name }}</option
+                      >
+                    </select>
+                    <!-- <input
                       type="text"
                       class="form-control"
                       id="inputPassword"
                       v-model="store_manager"
                       required
-                    />
+                    /> -->
                   </div>
                 </div>
 
@@ -520,6 +535,7 @@ export default {
       store: "",
       store_manager: "",
       o365_users: [],
+      managers: [],
       all_users: [],
       tasks: {
         task1: " ",
@@ -581,13 +597,14 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    store: function(val) {
+    "form.store_id": function(val) {
       this.stores.forEach(i => {
         if (i.id === val) {
-          this.store_manager = i.store_admin_name;
+            this.managers = i.admins;
+        //   this.store_manager = i.store_admin_name;
         }
       });
-      this.form.store_id = val;
+      this.store = val;
     },
     "tasks.task1": function(val) {
       document.getElementById("task1").value = val;
@@ -640,19 +657,35 @@ export default {
         this.submitForm();
       }
     },
+    genQuestionAnswers () {
+        let i = 0;
+        let data = [];
+        document.querySelectorAll(".md-raised").forEach(function(el) {
+            el.querySelectorAll("input").forEach(function (radio) {
+                if(el.type="radio") { 
+                    if(radio.checked) {
+                        console.log('boom')
+                        data.push({
+                            questionno: ++i,
+                            questiontext: el.getElementsByTagName('p')[0].innerHTML,
+                            answer: radio.value
+                        })
+                    }
+                }
+            });
+        });
+        this.form.question_answer = data;
+        this.form.username = this.username;
+        this.form.store_manager = this.store_manager;
+    },
     submitForm() {
+        this.genQuestionAnswers();
       let total_point = 0;
       let taskplanner = [];
-      document.querySelectorAll("input").forEach(function(el, ind) {
-        if (el.checked) {
-          total_point += parseInt(el.value);
-          //   console.log(el.value)
-        }
-      });
-      this.form.total_point = total_point;
-      this.form.total_percent = Math.ceil(
-        document.getElementsByClassName("form-check-inline").length * 5
-      );
+      let possible_points = 0;
+      
+      this.form.total_point = 0;
+      this.form.total_percent = 0
 
       //data info
       let qa = [];

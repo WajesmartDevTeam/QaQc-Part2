@@ -49,10 +49,10 @@
                 <div
                   id="2"
                   class="form-group row question loc"
-                  data-name="Restaurant/Location"
+                  data-name="Store"
                 >
                   <label for="staticEmail" class="col-3 col-form-label"
-                    >Restaurant/Location</label
+                    >Store</label
                   >
                   <div class="col-9 select-wrapper">
                     <select
@@ -67,7 +67,7 @@
                         v-for="(store, index) in stores"
                         :key="index"
                         v-bind:value="store.id"
-                        >{{ store.address + ", " + store.location }}</option
+                        >{{ store.name }}</option
                       >
                     </select>
                   </div>
@@ -81,13 +81,28 @@
                     >Branch Manager on Duty</label
                   >
                   <div class="col-9">
-                    <input
+                    <select
+                      class="form-control"
+                      id="manager"
+                      v-model="store_manager"
+                      title="Select Manager"
+                      required
+                    >
+                      <option hidden value="">select manager...</option>
+                      <option
+                        v-for="(manager, index) in managers"
+                        :key="index"
+                        v-bind:value="manager.name"
+                        >{{ manager.name }}</option
+                      >
+                    </select>
+                    <!-- <input
                       type="text"
                       class="form-control"
                       id="inputPassword"
                       v-model="store_manager"
                       required
-                    />
+                    /> -->
                   </div>
                 </div>
 
@@ -967,6 +982,7 @@ export default {
     return {
       username: "",
       stores: [],
+      managers: [],
       store_manager: "",
       o365_users: [],
       all_users: [],
@@ -986,6 +1002,7 @@ export default {
         scoring_type: "scoring",
         total_point: "",
         total_percent: "",
+        question_answer: [],
         taskplanner: [],
         image1: "",
         image2: "",
@@ -1033,7 +1050,8 @@ export default {
     "form.store_id": function(val) {
       this.stores.forEach(i => {
         if (i.id === val) {
-          this.store_manager = i.store_admin_name;
+            this.managers = i.admins;
+        //   this.store_manager = i.store_admin_name;
         }
       });
     },
@@ -1094,22 +1112,48 @@ export default {
         this.submitForm();
       }
     },
+    genQuestionAnswers () {
+        let i = 0;
+        let data = [];
+        document.querySelectorAll(".md-raised").forEach(function(el) {
+            el.querySelectorAll("input").forEach(function (radio) {
+                if(el.type="radio") { 
+                    if(radio.checked) {
+                        console.log('boom')
+                        data.push({
+                            questionno: ++i,
+                            questiontext: el.getElementsByTagName('p')[0].innerHTML,
+                            answer: radio.value
+                        })
+                    }
+                }
+            });
+        });
+        this.form.question_answer = data;
+        this.form.username = this.username;
+        this.form.store_manager = this.store_manager;
+    },
     submitForm() {
+        this.genQuestionAnswers();
       let total_point = 0;
       let taskplanner = [];
+      let possible_points = 0;
       document.querySelectorAll("input").forEach(function(el, ind) {
         if (el.checked) {
           total_point += parseInt(el.value);
+          possible_points += 5;
           //   console.log(el.value)
         }
       });
       this.form.total_point = total_point;
-      this.form.total_percent = Math.ceil(
-        document.getElementsByClassName("form-check-inline").length * 5
-      );
+      this.form.total_percent = (total_point / possible_points) * 100;
+      this.form.possible_points = possible_points;
+
+      
 
       //data info
       let qa = [];
+
       var divs = document.querySelectorAll(".question").forEach(function(el) {
         let index = el.id;
         let qtext = el.dataset.name.replace(/\n/g, " ");
@@ -1120,6 +1164,15 @@ export default {
         } else {
           ans = el.childNodes[2].value;
         }
+        // for (var i = 0, length = radios.length; i < length; i++) {
+        // if (radios[i].checked) {
+        //     // do whatever you want with the checked radio
+        //     alert(radios[i].value);
+
+        //     // only one radio can be logically checked, don't check the rest
+        //     break;
+        // }
+        // }
         qa.push({
           questionno: index,
           questiontext: qtext,
@@ -1365,8 +1418,9 @@ export default {
       this.$socket
         .makeGetRequest(req)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.stores = response.data;
+
         })
         .catch(error => {
           console.log(error);

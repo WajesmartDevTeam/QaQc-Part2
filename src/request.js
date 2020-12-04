@@ -2,8 +2,9 @@ import axios from "axios";
 import Vue from "vue";
 import store from "./store";
 
-const URL = "http://qaqc.marketsquareng.website/api/";
+const URL = "https://qaqc-back.marketsquareng.website/api/";
 //const URL = "https://qa.sundryhrms.website/api/";
+// const URL = "http://localhost:8000/api/";
 
 export default {
   name: "Request",
@@ -25,7 +26,7 @@ export default {
 
     var request_urls = {
       //openings: 'listappliedjobposting',
-      stores: "https://qa.sundryhrms.website/api/allstores?store_code=MKS"
+      stores: URL + "allstores?store_code=MKS"
     };
 
     var request_url = request_urls[request.what];

@@ -9,7 +9,7 @@
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">For Admin</h1>
             <br /><br />
-            <a href="https://qa-admin.sundryhrms.website/">
+            <a href="https://qaqc-admin.marketsquareng.website/">
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"
@@ -71,7 +71,7 @@ export default {
           clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
           authority:
             "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
-          postLogoutRedirectUri: "http://localhost:8080"
+          postLogoutRedirectUri: "https://qaqc-auditor.marketsquareng.website/"
         }
       },
       graphConfig: {

@@ -9,7 +9,7 @@
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">For Admin</h1>
             <br /><br />
-            <a href="https://qaqc-admin.marketsquareng.website/login">
+            <a href="https://qaqc-admin.marketsquareng.website">
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"
@@ -128,6 +128,19 @@ export default {
         this.acquireTokenPopupAndCallMSGraph();
       } catch (ex) {
         console.log(ex);
+        this.$swal.close();
+        let message = '<p>' + ex.message + '</p> ';
+        if(ex.message.includes('pop') ) {
+          message += "<p>Allow Pop Ups for this domain at the top right of the url bar in your browser and then refresh this page</p>";
+        }
+        this.$swal.fire({
+          title: "Opps !",
+          html: message,
+          showConfirmButton: false,
+          showCancelButton: false,
+          width: "300px",
+          allowOutsideClick: false
+        });
       }
     },
 

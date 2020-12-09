@@ -9,7 +9,7 @@
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">For Admin</h1>
             <br /><br />
-            <a href="https://qaqc-admin.marketsquareng.website/">
+            <a href="https://qaqc-admin.marketsquareng.website/login">
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"

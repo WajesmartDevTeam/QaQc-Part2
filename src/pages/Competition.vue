@@ -89,7 +89,7 @@
                       title="Select Manager"
                       required
                     >
-                      <option hidden selected v-if="managers.length == 0 && store_id != ''" value="">No available Managers for the selected store</option>
+                      <option hidden selected v-if="managers.length == 0 && store_id != '' && store_manager == ''" value="">No available Managers for the selected store</option>
                       <option hidden v-else value="">select manager...</option>
                       
                       <option
@@ -524,6 +524,7 @@ export default {
   watch: {
     "store_id": function(val) {
       this.form.store_id = val;
+      this.store_manager = "";
       this.stores.forEach(i => {
         if (i.id === val) {
             this.managers = i.admins;

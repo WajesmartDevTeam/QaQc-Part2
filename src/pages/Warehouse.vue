@@ -804,6 +804,7 @@ export default {
   watch: {
     "store_id": function(val) {
       this.form.store_id = val;
+      this.store_manager = "";
       this.stores.forEach(i => {
         if (i.id === val) {
             this.managers = i.admins;

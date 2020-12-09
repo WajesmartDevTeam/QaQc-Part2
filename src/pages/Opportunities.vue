@@ -46,7 +46,7 @@
                     >
                   </div>
                 </div> -->
-                 <div
+                                 <div
                   id="2"
                   class="form-group row question loc"
                   data-name="Store"
@@ -54,15 +54,16 @@
                   <label for="staticEmail" class="col-3 col-form-label"
                     >Store</label
                   >
-                  <div class="col-9 select-wrapper">
+                   <div class="col-9">
                     <select
                       class="form-control"
-                      id="location"
-                      v-model="form.store_id"
-                      title="Select store visited"
+                      id="manager"
+                      v-model="store_id"
+                      title="Select Store"
                       required
                     >
-                      <option hidden value="">select store...</option>
+                      <option selected hidden value="">select store...</option>
+                      
                       <option
                         v-for="(store, index) in stores"
                         :key="index"
@@ -88,7 +89,9 @@
                       title="Select Manager"
                       required
                     >
-                      <option hidden value="">select manager...</option>
+                      <option hidden selected v-if="managers.length == 0 && store_id != ''" value="">No available Managers for the selected store</option>
+                      <option hidden v-else value="">select manager...</option>
+                      
                       <option
                         v-for="(manager, index) in managers"
                         :key="index"
@@ -96,13 +99,6 @@
                         >{{ manager.name }}</option
                       >
                     </select>
-                    <!-- <input
-                      type="text"
-                      class="form-control"
-                      id="inputPassword"
-                      v-model="store_manager"
-                      required
-                    /> -->
                   </div>
                 </div>
 
@@ -530,6 +526,7 @@ export default {
   },
   data() {
     return {
+      store_id: "",
       username: "",
       stores: [],
       store: "",
@@ -597,7 +594,8 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    "form.store_id": function(val) {
+    "store_id": function(val) {
+      this.form.store_id = val;
       this.stores.forEach(i => {
         if (i.id === val) {
             this.managers = i.admins;

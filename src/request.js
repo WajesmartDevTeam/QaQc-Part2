@@ -153,7 +153,7 @@ export default {
 
             resolve(response);
           } else {
-            reject(response.data);
+            reject(response);
           }
         })
         .catch(err => {

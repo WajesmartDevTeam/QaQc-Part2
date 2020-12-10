@@ -13,6 +13,7 @@
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"
+                style="z-index: 1"
                 title="Sign in to view reports"
               >
                 Sign In
@@ -124,7 +125,7 @@ export default {
       try {
         const loginResponse = await this.myMSALObj.loginPopup(this.requestObj);
         // this.showWelcomeMessage();
-        // console.log(loginResponse)
+        console.log(loginResponse)
         this.acquireTokenPopupAndCallMSGraph();
       } catch (ex) {
         console.log(ex);
@@ -211,10 +212,30 @@ export default {
             })
             .then(() => {
               this.$store.dispatch("logout", true);
+              this.signOut();
               //location.reload();
             });
         }
       });
+
+      if(data.value.length == 0) {
+        this.$swal
+          .fire({
+            title: "Error",
+            text:
+              "User Access Denied. Contact your Admin to grant you access.",
+            showCloseButton: true,
+            focusConfirm: false,
+            confirmButtonText: '<i class="fa fa-thumbs-down"></i> Sign Out',
+            width: "300px",
+            allowOutsideClick: false
+          })
+          .then(() => {
+            this.$store.dispatch("logout", true);
+            this.signOut();
+            //location.reload();
+          });
+      }
     },
 
     showWelcomeMessage() {

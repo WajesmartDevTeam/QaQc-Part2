@@ -496,7 +496,7 @@
                       <tr>
                         <td id="24" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="25" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -529,7 +529,7 @@
                       <tr>
                         <td id="28" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="29" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -562,7 +562,7 @@
                       <tr>
                         <td id="32" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="33" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -595,7 +595,7 @@
                       <tr>
                         <td id="36" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="37" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -628,7 +628,7 @@
                       <tr>
                         <td id="40" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="41" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -921,7 +921,7 @@ export default {
       this.form.question = qa;
       //microsoft planner-action tasks
 
-      document
+       document
         .querySelectorAll("[data-name='assignedTo']")
         .forEach((i, index1) => {
           let my_index = index1;
@@ -953,30 +953,41 @@ export default {
                 }
               });
 
-            let plannerTask = {
-              planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
-              title: title,
-              dueDateTime: due_date,
-              assignments: {}
-            };
-            plannerTask.assignments[user_id] = {
-              "@odata.type": "#microsoft.graph.plannerAssignment",
-              orderHint: " !"
-            };
             taskplanner.push({
               task: title,
               assignedto: user,
               status: "pending",
               due_date: due_date,
-              store_id: this.form.store_id
+              store_id: this.form.store_id,
+              user_id: user_id
             });
-            console.log(plannerTask);
-
-            //   this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask))
           }
         });
 
       this.form.taskplanner = taskplanner;
+
+      let i = 0;
+      for( i = 0; i < taskplanner.length; i++) {
+        let task = taskplanner[i]
+        if(task.task == "" || task.due_date == "" || task.assignedto =="") {
+          this.$swal.fire("Error", "Check your task planner details for any unfilled adjacent columns", "error");
+          return;
+        }
+      }
+
+      taskplanner.forEach((task) => {
+        let plannerTask = {
+          planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
+          title: task.task,
+          dueDateTime: task.due_date,
+          assignments: {}
+        };
+        plannerTask.assignments[task.user_id] = {
+          "@odata.type": "#microsoft.graph.plannerAssignment",
+          orderHint: " !"
+        };
+        this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask));
+      });
       if (this.images[0] == undefined) {
         this.images[0] = { image: "" };
       }

@@ -9,7 +9,7 @@
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">For Admin</h1>
             <br /><br />
-            <a href="https://qaqc-admin.marketsquareng.website">
+            <a @click="signIn('admin'); " >
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"
@@ -32,7 +32,7 @@
               <div class="masthead-content text-warning py-5 py-md-0">
                 <h1 class="mb-3">For Inspectors</h1>
                 <br /><br />
-                <a @click="signIn">
+                <a @click="signIn('auditor')">
                   <button
                     class="text-uppercase btn btn-warning text-white p-2"
                     type="button"
@@ -72,7 +72,7 @@ export default {
           clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
           authority:
             "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
-          postLogoutRedirectUri: "https://qaqc-auditor.marketsquareng.website/"
+          postLogoutRedirectUri: "https://qaqc.marketsquareng.website/"
         }
       },
       graphConfig: {
@@ -111,7 +111,7 @@ export default {
     }
   },
   methods: {
-    async signIn() {
+    async signIn(type) {
       var html =
         '<img src="https://freefrontend.com/assets/img/css-loaders/css-fun-Little-loader.gif"/>';
       this.$swal.fire({
@@ -127,6 +127,9 @@ export default {
         // this.showWelcomeMessage();
         console.log(loginResponse)
         this.acquireTokenPopupAndCallMSGraph();
+        if(type == 'admin') {
+          window.location = 'https://qaqc-admin.marketsquareng.website';
+        }
       } catch (ex) {
         console.log(ex);
         this.$swal.close();

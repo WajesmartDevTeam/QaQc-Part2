@@ -46,28 +46,29 @@
                     >
                   </div>
                 </div> -->
-                <div
+                                <div
                   id="2"
                   class="form-group row question loc"
-                  data-name="Restaurant/Location"
+                  data-name="Store"
                 >
                   <label for="staticEmail" class="col-3 col-form-label"
-                    >Restaurant/Location</label
+                    >Store</label
                   >
-                  <div class="col-9 select-wrapper">
+                   <div class="col-9">
                     <select
                       class="form-control"
-                      id="location"
-                      v-model="store"
-                      title="Select store visited"
+                      id="manager"
+                      v-model="store_id"
+                      title="Select Store"
                       required
                     >
-                      <option hidden value="">select store...</option>
+                      <option selected hidden value="">select store...</option>
+                      
                       <option
                         v-for="(store, index) in stores"
                         :key="index"
                         v-bind:value="store.id"
-                        >{{ store.address + ", " + store.location }}</option
+                        >{{ store.name }}</option
                       >
                     </select>
                   </div>
@@ -81,16 +82,25 @@
                     >Branch Manager on Duty</label
                   >
                   <div class="col-9">
-                    <input
-                      type="text"
+                    <select
                       class="form-control"
-                      id="inputPassword"
+                      id="manager"
                       v-model="store_manager"
+                      title="Select Manager"
                       required
-                    />
+                    >
+                      <option hidden selected v-if="managers.length == 0 && store_id != '' && store_manager == ''" value="">No available Managers for the selected store</option>
+                      <option hidden v-else value="">select manager...</option>
+                      
+                      <option
+                        v-for="(manager, index) in managers"
+                        :key="index"
+                        v-bind:value="manager.name"
+                        >{{ manager.name }}</option
+                      >
+                    </select>
                   </div>
                 </div>
-
                 <br />
 
                 <!-- questions -->
@@ -205,7 +215,7 @@
                       <tr>
                         <td id="24" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="25" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -238,7 +248,7 @@
                       <tr>
                         <td id="28" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="29" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -271,7 +281,7 @@
                       <tr>
                         <td id="32" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="33" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -302,14 +312,14 @@
                         </td>
                       </tr>
                       <tr>
-                        <td id="36" class="" data-name="task">
+                        <td id="40" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
-                        <td id="37" class="" data-name="assignedTo">
+                        <td id="41" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
                           <input
-                            id="task4"
+                            id="task5"
                             class="form-control"
                             type="hidden"
                             name=""
@@ -337,7 +347,7 @@
                       <tr>
                         <td id="40" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="41" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -443,8 +453,10 @@ export default {
   },
   data() {
     return {
+      store_id: "",
       username: "",
       stores: [],
+      managers: [],
       store: "",
       store_manager: "",
       checked: "",
@@ -476,7 +488,7 @@ export default {
       myMSALObj: null,
       msalConfig: {
         auth: {
-          clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
+          clientId: "0130e8b2-3895-48a0-aaf5-69d3f69ad855", //This is your client ID
           authority:
             "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40" //This is your tenant info
         }
@@ -510,13 +522,16 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    store: function(val) {
+    "store_id": function(val) {
+      this.form.store_id = val;
+      this.store_manager = "";
       this.stores.forEach(i => {
         if (i.id === val) {
-          this.store_manager = i.store_admin_name;
+            this.managers = i.admins;
+        //   this.store_manager = i.store_admin_name;
         }
       });
-      this.form.store_id = val;
+      this.store = val;
     },
     "tasks.task1": function(val) {
       document.getElementById("task1").value = val;
@@ -569,19 +584,34 @@ export default {
         this.submitForm();
       }
     },
+    genQuestionAnswers () {
+        let i = 0;
+        let data = [];
+        document.querySelectorAll(".md-raised").forEach(function(el) {
+            el.querySelectorAll("input").forEach(function (radio) {
+                if(el.type="radio") { 
+                    if(radio.checked) {
+                        console.log('boom')
+                        data.push({
+                            questionno: ++i,
+                            questiontext: el.getElementsByTagName('p')[0].innerHTML,
+                            answer: radio.value
+                        })
+                    }
+                }
+            });
+        });
+        this.form.question_answer = data;
+        this.form.username = this.username;
+        this.form.store_manager = this.store_manager;
+    },
     submitForm() {
+        this.genQuestionAnswers();
       let total_point = 0;
       let taskplanner = [];
-      document.querySelectorAll("input").forEach(function(el, ind) {
-        if (el.checked) {
-          total_point += parseInt(el.value);
-          //   console.log(el.value)
-        }
-      });
-      this.form.total_point = total_point;
-      this.form.total_percent = Math.ceil(
-        document.getElementsByClassName("form-check-inline").length * 5
-      );
+      let possible_points = 0;
+      this.form.total_point = 0;
+      this.form.total_percent = 0;
 
       //data info
       let qa = [];
@@ -623,7 +653,7 @@ export default {
 
       //microsoft planner-action tasks
 
-      document
+       document
         .querySelectorAll("[data-name='assignedTo']")
         .forEach((i, index1) => {
           let my_index = index1;
@@ -655,30 +685,42 @@ export default {
                 }
               });
 
-            let plannerTask = {
-              planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
-              title: title,
-              dueDateTime: due_date,
-              assignments: {}
-            };
-            plannerTask.assignments[user_id] = {
-              "@odata.type": "#microsoft.graph.plannerAssignment",
-              orderHint: " !"
-            };
             taskplanner.push({
               task: title,
               assignedto: user,
               status: "pending",
               due_date: due_date,
-              store_id: this.form.store_id
+              store_id: this.form.store_id,
+              user_id: user_id
             });
-            console.log(plannerTask);
-
-            //   this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask))
           }
         });
 
       this.form.taskplanner = taskplanner;
+
+      let i = 0;
+      for( i = 0; i < taskplanner.length; i++) {
+        let task = taskplanner[i]
+        if(task.task == "" || task.due_date == "" || task.assignedto =="") {
+          this.$swal.fire("Error", "Check your task planner details for any unfilled adjacent columns", "error");
+          return;
+        }
+      }
+
+      taskplanner.forEach((task) => {
+        let plannerTask = {
+          planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
+          title: task.task,
+          dueDateTime: task.due_date,
+          assignments: {}
+        };
+        plannerTask.assignments[task.user_id] = {
+          "@odata.type": "#microsoft.graph.plannerAssignment",
+          orderHint: " !"
+        };
+        this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask));
+      });
+
       if (this.images[0] == undefined) {
         this.images[0] = { image: "" };
       }

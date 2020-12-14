@@ -49,45 +49,38 @@
                 <div
                   id="2"
                   class="form-group row question loc"
-                  data-name="Restaurant/Location"
                 >
                   <label for="staticEmail" class="col-3 col-form-label"
-                    >Restaurant/Location</label
+                    >Store</label
                   >
-                  <div class="col-9 select-wrapper">
+                   <div class="col-9">
                     <select
                       class="form-control"
-                      id="location"
-                      v-model="form.store_id"
-                      title="Select store visited"
+                      id="manager"
+                      v-model="store_id"
+                      title="Select Store"
                       required
                     >
-                      <option hidden value="">select store...</option>
+                      <option selected hidden value="">select store...</option>
+                      
+                  <div class="col-9">
+                    <select
+                      class="form-control"
+                      id="manager"
+                      v-model="store_manager"
+                      title="Select Manager"
+                      required
+                    >
+                      <option hidden selected v-if="managers.length == 0 && store_id != '' && store_manager == ''" value="">No available Managers for the selected store</option>
+                      <option hidden selected v-else value="">select manager...</option>
+                      
                       <option
-                        v-for="(store, index) in stores"
+                        v-for="(manager, index) in managers"
                         :key="index"
-                        v-bind:value="store.id"
-                        >{{ store.address + ", " + store.location }}</option
+                        v-bind:value="manager.name"
+                        >{{ manager.name }}</option
                       >
                     </select>
-                  </div>
-                </div>
-                <div
-                  id="3"
-                  class="form-group row question"
-                  data-name="Manager(s) on Duty"
-                >
-                  <label for="inputPassword" class="col-3 col-form-label"
-                    >Branch Manager on Duty</label
-                  >
-                  <div class="col-9">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputPassword"
-                      v-model="store_manager"
-                      required
-                    />
                   </div>
                 </div>
 
@@ -726,7 +719,7 @@
                       <tr>
                         <td id="24" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="25" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -759,7 +752,7 @@
                       <tr>
                         <td id="28" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="29" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -792,7 +785,7 @@
                       <tr>
                         <td id="32" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="33" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -825,7 +818,7 @@
                       <tr>
                         <td id="36" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="37" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -858,7 +851,7 @@
                       <tr>
                         <td id="40" class="" data-name="task">
                           <label for="" class="label"> </label>
-                          <input class="form-control" type="text" name="" />
+                          <input class="form-control" type="text" placeholder="Fill Project/Task Title" name="" />
                         </td>
                         <td id="41" class="" data-name="assignedTo">
                           <label for="" class="label"> </label>
@@ -965,8 +958,10 @@ export default {
   },
   data() {
     return {
+      store_id: "",
       username: "",
       stores: [],
+      managers: [],
       store_manager: "",
       o365_users: [],
       all_users: [],
@@ -986,6 +981,7 @@ export default {
         scoring_type: "scoring",
         total_point: "",
         total_percent: "",
+        question_answer: [],
         taskplanner: [],
         image1: "",
         image2: "",
@@ -996,7 +992,7 @@ export default {
       myMSALObj: null,
       msalConfig: {
         auth: {
-          clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
+          clientId: "0130e8b2-3895-48a0-aaf5-69d3f69ad855", //This is your client ID
           authority:
             "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40" //This is your tenant info
         }
@@ -1030,10 +1026,13 @@ export default {
     document.getElementById("taskdate5").setAttribute("min", today);
   },
   watch: {
-    "form.store_id": function(val) {
+    "store_id": function(val) {
+      this.form.store_id = val;
+      this.store_manager = "";
       this.stores.forEach(i => {
         if (i.id === val) {
-          this.store_manager = i.store_admin_name;
+            this.managers = i.admins;
+        //   this.store_manager = i.store_admin_name;
         }
       });
     },
@@ -1094,22 +1093,48 @@ export default {
         this.submitForm();
       }
     },
+    genQuestionAnswers () {
+        let i = 0;
+        let data = [];
+        document.querySelectorAll(".md-raised").forEach(function(el) {
+            el.querySelectorAll("input").forEach(function (radio) {
+                if(el.type="radio") { 
+                    if(radio.checked) {
+                        console.log('boom')
+                        data.push({
+                            questionno: ++i,
+                            questiontext: el.getElementsByTagName('p')[0].innerHTML,
+                            answer: radio.value
+                        })
+                    }
+                }
+            });
+        });
+        this.form.question_answer = data;
+        this.form.username = this.username;
+        this.form.store_manager = this.store_manager;
+    },
     submitForm() {
+        this.genQuestionAnswers();
       let total_point = 0;
       let taskplanner = [];
+      let possible_points = 0;
       document.querySelectorAll("input").forEach(function(el, ind) {
         if (el.checked) {
           total_point += parseInt(el.value);
+          possible_points += 5;
           //   console.log(el.value)
         }
       });
       this.form.total_point = total_point;
-      this.form.total_percent = Math.ceil(
-        document.getElementsByClassName("form-check-inline").length * 5
-      );
+      this.form.total_percent = (total_point / possible_points) * 100;
+      this.form.possible_points = possible_points;
+
+      
 
       //data info
       let qa = [];
+
       var divs = document.querySelectorAll(".question").forEach(function(el) {
         let index = el.id;
         let qtext = el.dataset.name.replace(/\n/g, " ");
@@ -1120,6 +1145,15 @@ export default {
         } else {
           ans = el.childNodes[2].value;
         }
+        // for (var i = 0, length = radios.length; i < length; i++) {
+        // if (radios[i].checked) {
+        //     // do whatever you want with the checked radio
+        //     alert(radios[i].value);
+
+        //     // only one radio can be logically checked, don't check the rest
+        //     break;
+        // }
+        // }
         qa.push({
           questionno: index,
           questiontext: qtext,
@@ -1130,7 +1164,6 @@ export default {
       this.form.question = qa;
 
       //microsoft planner-action tasks
-
       document
         .querySelectorAll("[data-name='assignedTo']")
         .forEach((i, index1) => {
@@ -1163,30 +1196,42 @@ export default {
                 }
               });
 
-            let plannerTask = {
-              planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
-              title: title,
-              dueDateTime: due_date,
-              assignments: {}
-            };
-            plannerTask.assignments[user_id] = {
-              "@odata.type": "#microsoft.graph.plannerAssignment",
-              orderHint: " !"
-            };
             taskplanner.push({
               task: title,
               assignedto: user,
               status: "pending",
               due_date: due_date,
-              store_id: this.form.store_id
+              store_id: this.form.store_id,
+              user_id: user_id
             });
-            //console.log(plannerTask)
-
-            this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask));
           }
         });
 
       this.form.taskplanner = taskplanner;
+
+      let i = 0;
+      for( i = 0; i < taskplanner.length; i++) {
+        let task = taskplanner[i]
+        if(task.task == "" || task.due_date == "" || task.assignedto =="") {
+          this.$swal.fire("Error", "Check your task planner details for any unfilled adjacent columns", "error");
+          return;
+        }
+      }
+
+      taskplanner.forEach((task) => {
+        let plannerTask = {
+          planId: "iciLfcUe4keB_41IBcpwJWUAHkh2",
+          title: task.task,
+          dueDateTime: task.due_date,
+          assignments: {}
+        };
+        plannerTask.assignments[task.user_id] = {
+          "@odata.type": "#microsoft.graph.plannerAssignment",
+          orderHint: " !"
+        };
+        this.acquireTokenPopupAndCallMSGraph(JSON.stringify(plannerTask));
+      }); 
+
       if (this.images[0] == undefined) {
         this.images[0] = { image: "" };
       }
@@ -1239,7 +1284,7 @@ export default {
           ////location.reload();
         })
         .catch(error => {
-          // console.log(error);
+          console.log(error);
           this.$swal.fire("Error", error.message, "error");
           this.form.question_answer = [];
         });
@@ -1296,7 +1341,9 @@ export default {
             // console.log(data)
           }
         );
+        return true;
       } catch (ex) {
+        return ex;
         console.log(ex);
       }
     },
@@ -1365,8 +1412,9 @@ export default {
       this.$socket
         .makeGetRequest(req)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.stores = response.data;
+
         })
         .catch(error => {
           console.log(error);

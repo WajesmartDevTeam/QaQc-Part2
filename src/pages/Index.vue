@@ -9,10 +9,11 @@
           <div class="masthead-content text-white py-5 py-md-0">
             <h1 class="mb-3">For Admin</h1>
             <br /><br />
-            <a href="https://qa-admin.sundryhrms.website/">
+            <a @click="signIn('admin'); " >
               <button
                 class="text-uppercase btn btn-light text-warning p-2"
                 type="button"
+                style="z-index: 1"
                 title="Sign in to view reports"
               >
                 Sign In
@@ -31,7 +32,7 @@
               <div class="masthead-content text-warning py-5 py-md-0">
                 <h1 class="mb-3">For Inspectors</h1>
                 <br /><br />
-                <a @click="signIn">
+                <a @click="signIn('auditor')">
                   <button
                     class="text-uppercase btn btn-warning text-white p-2"
                     type="button"
@@ -68,10 +69,11 @@ export default {
       myMSALObj: null,
       msalConfig: {
         auth: {
-          clientId: "dfd74765-cfab-4e7f-bdcb-c619d600dfee", //This is your client ID
-          authority:
-            "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
-          postLogoutRedirectUri: "http://localhost:8080"
+          // clientId: "0130e8b2-3895-48a0-aaf5-69d3f69ad855", //This is your client ID
+          clientId: "0130e8b2-3895-48a0-aaf5-69d3f69ad855", //This is your client ID
+          authority: "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
+          // authority: "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
+          postLogoutRedirectUri: "https://qaqc.marketsquareng.website/"
         }
       },
       graphConfig: {
@@ -110,7 +112,7 @@ export default {
     }
   },
   methods: {
-    async signIn() {
+    async signIn(type) {
       var html =
         '<img src="https://freefrontend.com/assets/img/css-loaders/css-fun-Little-loader.gif"/>';
       this.$swal.fire({
@@ -124,10 +126,26 @@ export default {
       try {
         const loginResponse = await this.myMSALObj.loginPopup(this.requestObj);
         // this.showWelcomeMessage();
-        // console.log(loginResponse)
+        console.log(loginResponse)
         this.acquireTokenPopupAndCallMSGraph();
+        if(type == 'admin') {
+          window.location = 'https://qaqc-admin.marketsquareng.website';
+        }
       } catch (ex) {
         console.log(ex);
+        this.$swal.close();
+        let message = '<p>' + ex.message + '</p> ';
+        if(ex.message.includes('pop') ) {
+          message += "<p>Allow Pop Ups for this domain at the top right of the url bar in your browser and then refresh this page</p>";
+        }
+        this.$swal.fire({
+          title: "Opps !",
+          html: message,
+          showConfirmButton: false,
+          showCancelButton: false,
+          width: "300px",
+          allowOutsideClick: false
+        });
       }
     },
 
@@ -198,10 +216,30 @@ export default {
             })
             .then(() => {
               this.$store.dispatch("logout", true);
+              this.signOut();
               //location.reload();
             });
         }
       });
+
+      if(data.value.length == 0) {
+        this.$swal
+          .fire({
+            title: "Error",
+            text:
+              "User Access Denied. Contact your Admin to grant you access.",
+            showCloseButton: true,
+            focusConfirm: false,
+            confirmButtonText: '<i class="fa fa-thumbs-down"></i> Sign Out',
+            width: "300px",
+            allowOutsideClick: false
+          })
+          .then(() => {
+            this.$store.dispatch("logout", true);
+            this.signOut();
+            //location.reload();
+          });
+      }
     },
 
     showWelcomeMessage() {

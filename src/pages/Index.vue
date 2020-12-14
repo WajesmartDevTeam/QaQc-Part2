@@ -73,7 +73,7 @@ export default {
           clientId: "0130e8b2-3895-48a0-aaf5-69d3f69ad855", //This is your client ID
           authority: "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
           // authority: "https://login.microsoftonline.com/ce18dbbe-5ce8-4dac-bbcc-874dba4c0a40", //This is your tenant info
-          postLogoutRedirectUri: "https://qaqc.marketsquareng.website/"
+          postLogoutRedirectUri: "https://qaqc.marketsquareng.website"
         }
       },
       graphConfig: {
@@ -113,6 +113,9 @@ export default {
   },
   methods: {
     async signIn(type) {
+      if(type == 'admin') {
+          window.location = 'https://qaqc-admin.marketsquareng.website';
+      }
       var html =
         '<img src="https://freefrontend.com/assets/img/css-loaders/css-fun-Little-loader.gif"/>';
       this.$swal.fire({
@@ -128,9 +131,7 @@ export default {
         // this.showWelcomeMessage();
         console.log(loginResponse)
         this.acquireTokenPopupAndCallMSGraph();
-        if(type == 'admin') {
-          window.location = 'https://qaqc-admin.marketsquareng.website';
-        }
+        
       } catch (ex) {
         console.log(ex);
         this.$swal.close();

@@ -115,6 +115,7 @@ export default {
     async signIn(type) {
       if(type == 'admin') {
           window.location = 'https://qaqc-admin.marketsquareng.website';
+          return;
       }
       var html =
         '<img src="https://freefrontend.com/assets/img/css-loaders/css-fun-Little-loader.gif"/>';
